@@ -9,11 +9,11 @@ const Home = () => {
     return (
         <div>
             <div className="relative">
-                <img
+                {/* <img
                     src={home}
                     alt="Banner"
                     className="w-full h-auto object-cover"
-                />
+                /> */}
             </div>
             <div className="py-12 mt-20 bg-gray-100">
                 <h2 className="text-center text-3xl md:text-4xl font-bold mb-8">Shop By Category</h2>

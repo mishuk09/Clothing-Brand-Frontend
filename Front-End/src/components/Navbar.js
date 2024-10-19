@@ -21,10 +21,10 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
     return (
         <div>
             <div className="border-b shadow-md">
-                <div className="container mx-auto flex justify-between items-center py-4">
+                <div className="container mx-auto flex justify-between items-center py-2">
                     <div className="navbar-logo">
                         <Link to='/'>
-                            <img className='w-[120px]' src={mainlogo} alt="Logo" />
+                            <img className='w-[110px]' src={mainlogo} alt="Logo" />
                         </Link>
                     </div>
                     <div className="flex items-center lg:hidden">
@@ -44,24 +44,127 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                         </button>
                     </div>
                     <div className="hidden text-gray-500 lg:flex lg:items-center lg:space-x-4 md:justify-center">
-                        <ul className="flex space-x-10 me-10">
-                            <li className='relative group'>
-                                <Link to='/new' className="focus:outline-none">NEW</Link>
-                                <ul className="absolute hidden group-hover:block bg-white shadow-lg transition-all duration-300 ease-in-out mt-2">
-                                    <li><Link className="block px-4 py-2 hover:bg-gray-100" to='/new/shoes'>Shoes</Link></li>
-                                    <li><Link className="block px-4 py-2 hover:bg-gray-100" to='/new/clothes'>Clothes</Link></li>
-                                </ul>
+
+                        <ul class="nav-links">
+                            
+                            
+                            <li>
+                                <a href="#" class="desktop-item">MEN</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                <div class="mega-box">
+                                    <div class="content">
+                                        <div class="row">
+                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
+                                        </div>
+                                        <div class="row">
+                                            <header>Design Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Graphics</a></li>
+                                                <li><a href="#">Vectors</a></li>
+                                                <li><a href="#">Business cards</a></li>
+                                                <li><a href="#">Custom logo</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Email Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Personal Email</a></li>
+                                                <li><a href="#">Business Email</a></li>
+                                                <li><a href="#">Mobile Email</a></li>
+                                                <li><a href="#">Web Marketing</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Security services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Site Seal</a></li>
+                                                <li><a href="#">VPS Hosting</a></li>
+                                                <li><a href="#">Privacy Seal</a></li>
+                                                <li><a href="#">Website design</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
-                            <li className='relative group'>
-                                <Link to='/shoes' className="focus:outline-none">SHOES</Link>
-                                <ul className="absolute hidden group-hover:block bg-white shadow-lg transition-all duration-300 ease-in-out mt-2">
-                                    <li><Link className="block px-4 py-2 hover:bg-gray-100" to='/shoes/sneakers'>Sneakers</Link></li>
-                                    <li><Link className="block px-4 py-2 hover:bg-gray-100" to='/shoes/boots'>Boots</Link></li>
-                                </ul>
+                            <li>
+                                <a href="#" class="desktop-item">CHILD  </a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                <div class="mega-box">
+                                    <div class="content">
+                                        <div class="row">
+                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
+                                        </div>
+                                        <div class="row">
+                                            <header>Design Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Graphics</a></li>
+                                                <li><a href="#">Vectors</a></li>
+                                                <li><a href="#">Business cards</a></li>
+                                                <li><a href="#">Custom logo</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Email Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Personal Email</a></li>
+                                                <li><a href="#">Business Email</a></li>
+                                                <li><a href="#">Mobile Email</a></li>
+                                                <li><a href="#">Web Marketing</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Security services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Site Seal</a></li>
+                                                <li><a href="#">VPS Hosting</a></li>
+                                                <li><a href="#">Privacy Seal</a></li>
+                                                <li><a href="#">Website design</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
-                            <li><Link to='/cloth'>CLOTHS</Link></li>
-                            <li><Link to='/gloves'>GLOVES</Link></li>
-                            <li><Link to='/kitchen'>KITCHEN</Link></li>
+                            <li>
+                                <a href="#" class="desktop-item">WOMEN</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                <div class="mega-box">
+                                    <div class="content">
+                                        <div class="row">
+                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
+                                        </div>
+                                        <div class="row">
+                                            <header>Design Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Graphics</a></li>
+                                                <li><a href="#">Vectors</a></li>
+                                                <li><a href="#">Business cards</a></li>
+                                                <li><a href="#">Custom logo</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Email Services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Personal Email</a></li>
+                                                <li><a href="#">Business Email</a></li>
+                                                <li><a href="#">Mobile Email</a></li>
+                                                <li><a href="#">Web Marketing</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <header>Security services</header>
+                                            <ul class="mega-links">
+                                                <li><a href="#">Site Seal</a></li>
+                                                <li><a href="#">VPS Hosting</a></li>
+                                                <li><a href="#">Privacy Seal</a></li>
+                                                <li><a href="#">Website design</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+
+
                         </ul>
                     </div>
                     <div className="hidden lg:flex lg:items-center lg:space-x-4 md:justify-center">

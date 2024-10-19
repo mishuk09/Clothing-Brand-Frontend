@@ -15,7 +15,7 @@ import ProductPage from './components/ProductPage/ProductPage';
 import Edit from './components/Post/Edit';
 import Delete from './components/Post/Delete';
 import Cart from './components/Cart';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 import { CartProvider } from './components/CartContext';
 import { useState } from 'react';
@@ -30,6 +30,7 @@ import AboutUs from './components/Customers/AboutUs';
 import ContactUs from './components/Customers/ContactUs';
 import Home from './components/Home';
 import Popup from './components/Popup';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -76,6 +77,7 @@ function App() {
 
         </Routes>
 
+        {/* <Footer /> */}
         <Footer />
       </CartProvider >
     </div >

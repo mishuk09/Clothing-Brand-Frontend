@@ -4,6 +4,9 @@ import mainlogo from './logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faMagnifyingGlass, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cart from './Cart'; // Import the Cart component
+import people from './people.png';
+import cart from './shopping.png';
+import search from './search.png';
 
 const Navbar = ({ toggleCart, isCartOpen }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,8 +49,8 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                     <div className="hidden text-gray-500 lg:flex lg:items-center lg:space-x-4 md:justify-center">
 
                         <ul class="nav-links">
-                            
-                            
+
+
                             <li>
                                 <a href="#" class="desktop-item">MEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
@@ -162,20 +165,20 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                                     </div>
                                 </div>
                             </li>
-                            
+
 
 
                         </ul>
                     </div>
                     <div className="hidden lg:flex lg:items-center lg:space-x-4 md:justify-center">
                         <div className="flex gap-6">
-                            <div><FontAwesomeIcon size='xl' icon={faMagnifyingGlass} /></div>
+                            <div><img className='w-6' src={search} alt="" /></div>
                             <div onClick={toggleCart} className="cursor-pointer">
-                                <FontAwesomeIcon size='xl' icon={faCartShopping} />
+                                <img  className='w-6' src={cart} alt="" />
                             </div>
                             <div>
                                 <Link to={isAuthenticated ? '/dashboard' : '/signin'}>
-                                    <FontAwesomeIcon size='xl' icon={faUser} />
+                                    <img  className='w-6' src={people} alt="" />
                                 </Link>
                             </div>
                         </div>

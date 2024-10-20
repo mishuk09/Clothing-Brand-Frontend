@@ -5,6 +5,36 @@
 
 
 
+@layer utilities {
+  .custom-container {
+    max-width: 1410px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-font {
+    color: #225487;
+  }
+}
+
+
+
+
+:root {
+  --primary-color: #225487;
+  --secondary-color: #1d70ba;
+  --primary-text: #225487;
+  --primary-font: 'Roboto', sans-serif;
+  --primary-font-two: 'Jost', sans-serif;
+  --primary-font-three: 'Helvetica', Arial, Tahoma, sans-serif;
+
+  --input-color: rgb(85, 85, 85);
+  --input-font-size: 14px;
+}
+
+
 body {
   margin: 0;
   font-family: jost;
@@ -359,6 +389,146 @@ nav input {
 .deli-div2 {
   font-weight: 400;
 }
+
+
+
+
+/* ... */
+
+.parent-div {
+  position: relative;
+  overflow: hidden;
+  /* Ensures that the pseudo-element doesn't overflow its container */
+}
+
+.parent-div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('/images/home/1.png'); */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Ensure the pseudo-element is behind the content */
+  transition: transform 0.3s ease;
+  /* Transition effect for smooth animation */
+}
+
+.parent-div:hover::before {
+  transform: scale(1.1);
+  /* Zoom effect on hover */
+}
+
+.parent-div2 {
+  position: relative;
+  overflow: hidden;
+  /* Ensures that the pseudo-element doesn't overflow its container */
+}
+
+.parent-div2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('/images/home/2.png'); */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Ensure the pseudo-element is behind the content */
+  transition: transform 0.3s ease;
+  /* Transition effect for smooth animation */
+}
+
+.parent-div2:hover::before {
+  transform: scale(1.1);
+  /* Zoom effect on hover */
+}
+
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+}
+
+.popup-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.popup-overlay.active {
+  visibility: visible;
+  opacity: 1;
+  background-color: #000000a6;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .sidebar-content {
+    width: 100% !important;
+  }
+
+  .hover-img {
+    display: none;
+  }
+
+
+}
+
+@media (max-width: 1024px) {
+  .sidebar-main-wrapper {
+    display: block;
+  }
+
+  .sidebar-main-wrapper.inactive {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .sidebar-main-wrapper.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .sidebar-main-wrapper {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sidebar-content {
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-100%);
+  }
+
+  .sidebar-main-wrapper.active .sidebar-content {
+    transition: all 0.3s ease-in-out;
+    transform: translateX(0%);
+  }
+}
+
+
 
 
 /*#################################################

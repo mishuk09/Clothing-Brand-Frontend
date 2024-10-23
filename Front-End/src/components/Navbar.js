@@ -22,7 +22,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
     };
 
     return (
-        <div>
+        <div className=' '>
             <div className="border-b shadow-md">
                 <div className="container mx-auto flex justify-between items-center py-2">
                     <div className="navbar-logo">
@@ -51,11 +51,24 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                         <ul class="nav-links">
 
 
-                            <li>
+                            {/* <li className='hover:border-b translate-x-2'>
+                                <a href="#" class="desktop-item">NEW ARIVAL</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                
+                            </li> */}
+                            <li class="relative group pb-1">
+                                <a href="#" class="desktop-item">NEW ARRIVAL</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+
+                                {/* <!-- Border animation using ::before --> */}
+                                {/* <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-500 transition-all duration-500 ease-out group-hover:w-full"></span> */}
+                            </li>
+
+                            <li className=' '>
                                 <a href="#" class="desktop-item">MEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
                                 <div class="mega-box">
-                                    <div class="content">
+                                    <div class="content  ">
                                         <div class="row">
                                             <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
                                         </div>
@@ -88,45 +101,10 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                                         </div>
                                     </div>
                                 </div>
+                                <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-500 transition-all duration-500 ease-out group-hover:w-full"></span>
+
                             </li>
-                            <li>
-                                <a href="#" class="desktop-item">CHILD  </a>
-                                <label for="showMega" class="mobile-item">Mega Menu</label>
-                                <div class="mega-box">
-                                    <div class="content">
-                                        <div class="row">
-                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
-                                        </div>
-                                        <div class="row">
-                                            <header>Design Services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Graphics</a></li>
-                                                <li><a href="#">Vectors</a></li>
-                                                <li><a href="#">Business cards</a></li>
-                                                <li><a href="#">Custom logo</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="row">
-                                            <header>Email Services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Personal Email</a></li>
-                                                <li><a href="#">Business Email</a></li>
-                                                <li><a href="#">Mobile Email</a></li>
-                                                <li><a href="#">Web Marketing</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="row">
-                                            <header>Security services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Site Seal</a></li>
-                                                <li><a href="#">VPS Hosting</a></li>
-                                                <li><a href="#">Privacy Seal</a></li>
-                                                <li><a href="#">Website design</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+
                             <li>
                                 <a href="#" class="desktop-item">WOMEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
@@ -174,11 +152,11 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                         <div className="flex gap-6">
                             <div><img className='w-6' src={search} alt="" /></div>
                             <div onClick={toggleCart} className="cursor-pointer">
-                                <img  className='w-6' src={cart} alt="" />
+                                <img className='w-6' src={cart} alt="" />
                             </div>
                             <div>
                                 <Link to={isAuthenticated ? '/dashboard' : '/signin'}>
-                                    <img  className='w-6' src={people} alt="" />
+                                    <img className='w-6' src={people} alt="" />
                                 </Link>
                             </div>
                         </div>

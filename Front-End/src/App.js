@@ -22,9 +22,9 @@ import PrivacyPolicy from './components/Customers/PrivacyPolicy';
 import TermsOfService from './components/Customers/TermsOfService';
 import AboutUs from './components/Customers/AboutUs';
 import ContactUs from './components/Customers/ContactUs';
-import Home from './components/Home';
 import Popup from './components/Popup';
 import Footer from './components/Footer/Footer';
+import Home from './components/Home/Home';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -39,7 +39,7 @@ function App() {
         <Navbar toggleCart={toggleCart} isCartOpen={isCartOpen} />
 
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home/>} />
           <Route path='/new' element={<New />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />

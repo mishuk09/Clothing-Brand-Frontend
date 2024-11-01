@@ -28,10 +28,8 @@ const Home = () => {
 
 
 
-            <div className=" text-center items-center mt-10 ">
-                <h1 className="italic">New Arrivals</h1>
+           
                 <Newarrival />
-            </div>
 
             <New />
         </div>

@@ -49,6 +49,8 @@ const ProductPage = ({ toggleCart }) => {
     return doc.body.textContent || "";
   };
 
+
+  
   return (
     <div className="container mt-10 mb-20 mx-auto p-4">
       {
@@ -65,25 +67,41 @@ const ProductPage = ({ toggleCart }) => {
                 alt={product.title}
               />
             </div>
-            <div className="md:w-1/2 mt-4 md:mt-0">
-              <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-              <div className='flex items-center'>
-                <p className="text-xl mr-4 font-semibold mb-1 text-red-500">रू {product.newPrice}</p>
-                <p className="text-sm font-semibold mb-1 text-gray-700 line-through">रू {product.oldPrice}</p>
+            <div className="md:w-1/3 mt-4 md:mt-0">
+              <span className='uppercase '>{product.category}</span>
+              <h1 className="text-3xl   font-bold mt-2 mb-4">{product.title}</h1>
+             
+              <div>
+                <div>
+                  <span className="text-xl font-semibold">${product.newPrice}</span>
+                  <sup className="text-sm text-gray-800"> 99</sup> {/* Optional: you can add a label or just keep the sup with price */}
+                  <span className="line-through ms-2 text-gray-500">${product.oldPrice}</span>
+                </div>
               </div>
-              <p className="text-green-500 font-bold mb-4">
+
+
+
+              <p className="text-green-500 font-bold mt-2 mb-2">
                 {Math.round(((product.oldPrice - product.newPrice) / product.oldPrice) * 100)}% OFF
               </p>
-              <p className="text-gray-600 mb-4">Shipping is calculated at checkout</p>
 
-              <div className="mb-4">
+
+              <StarRating rating={5} reviews={5} />
+
+
+              <div className='mt-6'>
+                <p className="text-gray-700 mb-3">{stripHtmlTags(product.description)}</p>
+                <p className='text-gray-700'>Made in Australia</p>
+              </div>
+
+              <div className="mb-4 mt-6">
                 <label className="block mb-2 text-sm font-semibold text-gray-700">Color</label>
-                <div className="flex space-x-2">
+                <div className="flex mt-2 space-x-2">
                   {product.color.map(color => (
                     <button
                       key={color}
                       aria-label={`Select ${color}`}
-                      className={`relative w-10 h-10 rounded-full border ${selectedColor === color ? 'ring-2 ring-blue-500' : ''}`}
+                      className={`relative    w-10 h-10 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75 ${selectedColor === color ? 'ring-1 ring-black' : ''}`}
                       style={{ backgroundColor: color.toLowerCase() }}
                       onClick={() => setSelectedColor(color)}
                     >
@@ -95,14 +113,14 @@ const ProductPage = ({ toggleCart }) => {
                 </div>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-4 mt-6">
                 <label className="block mb-2 text-sm font-semibold text-gray-700">Size</label>
                 <div className="flex space-x-2">
                   {product.size.map(size => (
                     <button
                       key={size}
                       aria-label={`Select size ${size}`}
-                      className={`w-10 h-10 flex items-center justify-center text-base rounded-full border ${selectedSize === size ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'}`}
+                      className={`w-10 h-10 flex items-center justify-center text-base   border ${selectedSize === size ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'}`}
                       onClick={() => setSelectedSize(size)}
                     >
                       {size}
@@ -111,38 +129,41 @@ const ProductPage = ({ toggleCart }) => {
                 </div>
               </div>
 
-              <div className="mb-4 flex items-center">
-                <label className="block text-sm font-semibold text-gray-700 mr-4">Quantity</label>
-                <button
-                  aria-label="Decrease quantity"
-                  className="px-4 py-2 bg-gray-200 rounded-l-lg"
-                  onClick={() => handleQuantityChange(-1)}
-                >-</button>
-                <input
-                  type="number"
-                  value={quantity}
-                  readOnly
-                  className="w-16 p-2 border-t border-b text-center"
-                />
-                <button
-                  aria-label="Increase quantity"
-                  className="px-4 py-2 bg-gray-200 rounded-r-lg"
-                  onClick={() => handleQuantityChange(1)}
-                >+</button>
+             
+
+              <div className="mb-4   items-center">
+                <label className="text-sm  font-semibold text-gray-700 mr-4">Quantity</label>
+                <div className="flex mt-3 items-center">
+                  <button
+                    aria-label="Decrease quantity"
+                    className="px-3 py-1 bg-gray-200 text-gray-700 rounded-l-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                    onClick={() => handleQuantityChange(-1)}
+                  >
+                    &ndash;
+                  </button>
+                  <span className="w-12 text-center text-gray-800  ">{quantity}</span>
+                  <button
+                    aria-label="Increase quantity"
+                    className="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                    onClick={() => handleQuantityChange(1)}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
 
+
               <button
-                className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                className="add-to-cart mt-10 text-white w-full px-6 py-2 rounded-lg shadow-md  transition duration-300"
                 onClick={handleAddToCart}
               >
                 Add to Cart
               </button>
 
-              <div className="mt-8">
+              {/* <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4">Description</h2>
                 <p className="text-gray-700 mb-2">{stripHtmlTags(product.description)}</p>
-                {/* Add more product details if needed */}
-              </div>
+              </div> */}
             </div>
           </div>
         )
@@ -152,3 +173,36 @@ const ProductPage = ({ toggleCart }) => {
 };
 
 export default ProductPage;
+
+
+
+
+// StarRating component
+const StarRating = ({ rating, reviews }) => {
+  return (
+    <div className="flex items-center space-x-2">
+      <div className="flex">
+        {/* Displaying stars based on rating value */}
+        {[...Array(5)].map((_, index) => (
+          <svg
+            key={index}
+            xmlns="http://www.w3.org/2000/svg"
+            fill={index < rating ? "currentColor" : "none"}
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className={`w-5 h-5 ${index < rating ? "text-yellow-500" : "text-gray-300"}`}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+            />
+          </svg>
+        ))}
+      </div>
+      {/* Displaying review count */}
+      <span className="text-sm text-gray-600">{reviews} Reviews</span>
+    </div>
+  );
+};

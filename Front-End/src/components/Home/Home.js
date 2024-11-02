@@ -2,6 +2,11 @@ import React from 'react';
 import home from '../img/home/home.webp';
 import New from '../Items/New';
 import Newarrival from './Newarrival';
+import Offsection from './Offsection';
+import Offerdiv from './Offerdiv';
+import ShopourBasic from './ShopourBasics';
+import Flashsell from './Flashsell';
+import Info from './Info';
 
 const Home = () => {
     return (
@@ -28,10 +33,13 @@ const Home = () => {
 
 
 
-           
-                <Newarrival />
 
-            <New />
+            <Newarrival />
+            < Flashsell />
+            <Offsection />
+            <Offerdiv />
+            <ShopourBasic />
+            <Info />
         </div>
     );
 };

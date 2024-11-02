@@ -25,6 +25,7 @@ import ContactUs from './components/Customers/ContactUs';
 import Popup from './components/Popup';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
+import Outletstore from './components/Store/Outletstore';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -39,7 +40,8 @@ function App() {
         <Navbar toggleCart={toggleCart} isCartOpen={isCartOpen} />
 
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/outlet-store' element={<Outletstore />} />
           <Route path='/new' element={<New />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />

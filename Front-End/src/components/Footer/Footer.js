@@ -7,6 +7,11 @@ import paypal from './img/paypal.svg';
 import shopify from './img/shopify.svg';
 import union from './img/union.svg';
 import visa from './img/visa.svg';
+import logo from '../logo.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faPinterest, faTwitch } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 const Footer = () => {
     return (
 
@@ -16,23 +21,22 @@ const Footer = () => {
             <div class='bg-slate-50 h-auto   w-full  '>
                 <div class='custom-container footer-grid  pb-4 gap-3 w-[100%]'>
                     <div class='w-full h-full flex flex-col overflow-hidden'>
-                        <p class="text-black pt-12 pb-3 text-[15px] font-bold">Nepal Mart Online Shopping</p>
+                        <p className="text-black flex justify-center items-center pt-12 pb-3 text-[15px] font-bold">
+                            <img className="w-24" src={logo} alt="" />
+                        </p>
+
                         <p class="text-justify pe-6 text-[14px]">Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Porro eius doloremque doloribus quos, </p>
                         <p class="text-xl sm:text-2xl font-semibold mt-3 mb-2 number">+977 65764763</p>
                         <p class="text-justify pe-6 text-[14px]">Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. </p>
                         <div class="flex gap-2 mt-3">
-                            <p class="rounded-full border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                class="fa-brands fa-facebook-f"></i></p>
-                            <p class="rounded-full border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                class="fa-brands fa-youtube"></i></p>
-                            <p class="rounded-full border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                class="fa-brands fa-twitter"></i></p>
-                            <p class="rounded-full border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                class="fa-brands fa-square-instagram"></i></p>
-                            <p class="rounded-full border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                class="fa-brands fa-square-whatsapp"></i></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faFacebook} /></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faInstagram} /></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faPinterest} /></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faEnvelope} /></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><i
+              size='xl'                   class="fa-brands fa-square-whatsapp"></i></p>
                         </div>
                     </div>
 

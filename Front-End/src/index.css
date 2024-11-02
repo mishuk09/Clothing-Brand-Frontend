@@ -23,9 +23,10 @@
 
 
 :root {
-  --primary-color: #225487;
+  --primary-color: #2f2f2f;
   --secondary-color: #1d70ba;
-  --primary-text: #eeeeee;
+  --primary-font-color: #CCCCCC;
+  --primary-hover-color: #4a4a4a;
   --primary-font: 'Roboto', sans-serif;
   --primary-font-two: 'Jost', sans-serif;
   --primary-font-three: 'Helvetica', Arial, Tahoma, sans-serif;
@@ -447,13 +448,50 @@ nav input {
 }
 
 
+.offer-section {
+  background-color: var(--primary-color);
+}
+
+.outlet-section {
+  background-color: var(--primary-color);
+
+}
+
+.outlet-section-btn-2 {
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  width: 200px;
+}
+
+.shop-sell-outlet {
+  color: var(--primary-color);
+}
+
+.shop-by-size {
+  color: var(--primary-color);
+}
 
 
+.shop-btn {
+  background-color: var(--primary-color);
+  height: 180px;
+  width: full;
+  color: var(--primary-font-color);
+}
+
+.shop-btn:hover{
+  background-color: var(--primary-hover-color);
+}
 
 
-
-
-
+.add-to-cart{
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+}
+.add-to-cart:hover{
+  background-color: var(--primary-hover-color);
+  color: var(--primary-font-color);
+}
 
 
 
@@ -561,7 +599,30 @@ h1 {
 
 .new-arival {
   background-color: var(--section-bg-color);
+
 }
+
+.offer-div-title {
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.flash-sell {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+
+.wishlict-img {
+  color: red;
+  /* background-color: red; */
+}
+
 
 
 /*#################################################
@@ -591,7 +652,7 @@ h1 {
 }
 
 .number {
-  color: var(--primary-text);
+  color: var(--primary-color);
 }
 
 .deli-div {

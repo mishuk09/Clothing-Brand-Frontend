@@ -26,6 +26,7 @@ import Popup from './components/Popup';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Outletstore from './components/Store/Outletstore';
+import Info from './components/Home/Info';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -74,6 +75,7 @@ function App() {
         </Routes>
 
         {/* <Footer /> */}
+        <Info />
         <Footer />
       </CartProvider >
     </div >

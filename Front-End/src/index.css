@@ -624,6 +624,10 @@ h1 {
 }
 
 
+.review-btn{
+ background-color: var(--primary-color);
+ color: var(--primary-font-color); 
+}
 
 /*#################################################
 ####                                            ####

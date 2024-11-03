@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../CartContext';
+import ReviewSection from './ReviewSection';
 
 const ProductPage = ({ toggleCart }) => {
   const { id } = useParams();
@@ -50,7 +51,7 @@ const ProductPage = ({ toggleCart }) => {
   };
 
 
-  
+
   return (
     <div className="container mt-10 mb-20 mx-auto p-4">
       {
@@ -70,7 +71,7 @@ const ProductPage = ({ toggleCart }) => {
             <div className="md:w-1/3 mt-4 md:mt-0">
               <span className='uppercase '>{product.category}</span>
               <h1 className="text-3xl   font-bold mt-2 mb-4">{product.title}</h1>
-             
+
               <div>
                 <div>
                   <span className="text-xl font-semibold">${product.newPrice}</span>
@@ -129,7 +130,7 @@ const ProductPage = ({ toggleCart }) => {
                 </div>
               </div>
 
-             
+
 
               <div className="mb-4   items-center">
                 <label className="text-sm  font-semibold text-gray-700 mr-4">Quantity</label>
@@ -168,6 +169,10 @@ const ProductPage = ({ toggleCart }) => {
           </div>
         )
       }
+
+      <div>
+        <ReviewSection />
+      </div>
     </div>
   );
 };

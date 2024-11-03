@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 import ReviewSection from './ReviewSection';
+import Stylewith from './Stylewith';
+import Recentview from './Recentview';
 
 const ProductPage = ({ toggleCart }) => {
   const { id } = useParams();
@@ -172,6 +174,12 @@ const ProductPage = ({ toggleCart }) => {
 
       <div>
         <ReviewSection />
+      </div>
+      <div>
+        <Stylewith />
+      </div>
+      <div>
+        <Recentview />
       </div>
     </div>
   );

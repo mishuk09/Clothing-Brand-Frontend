@@ -1,12 +1,11 @@
 import React from 'react';
 import home from '../img/home/home.webp';
-import New from '../Items/New';
 import Newarrival from './Newarrival';
 import Offsection from './Offsection';
 import Offerdiv from './Offerdiv';
 import ShopourBasic from './ShopourBasics';
 import Flashsell from './Flashsell';
-import Info from './Info';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -24,9 +23,9 @@ const Home = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white p-4 max-w-[600px] w-full">
                         <h1 className="  home-title font-lato">THE LIGHTEST FABRIC YOU WILL EVER WEAR</h1>
-                        <button className=" btn bg-white text-black   ">
+                        <Link to='collection' className=" btn bg-white text-black   ">
                             SHOP NOW
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -39,7 +38,6 @@ const Home = () => {
             <Offsection />
             <Offerdiv />
             <ShopourBasic />
-            <Info />
         </div>
     );
 };

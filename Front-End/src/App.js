@@ -27,6 +27,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Outletstore from './components/Store/Outletstore';
 import Info from './components/Home/Info';
+import Collection from './components/Collection/Collection';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/outlet-store' element={<Outletstore />} />
+          <Route path='/collection' element={<Collection />} />
           <Route path='/new' element={<New />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />

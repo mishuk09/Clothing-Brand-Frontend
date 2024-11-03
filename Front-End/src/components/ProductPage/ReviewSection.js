@@ -45,7 +45,7 @@ const reviews = [
 const ReviewSection = () => {
     return (
         <div className="p-6 mt-14 max-w-4xl mx-auto">
-            <div className="text-center flex justify-center">
+            <div className="text-center border-b pb-6 flex justify-center">
                 <p className="text-2xl text-center items-center flex  ">
                     <span>4.8</span>
                     <div className='text-start text-sm ms-3'>
@@ -62,22 +62,24 @@ const ReviewSection = () => {
                 </p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-6">
                 {reviews.map((review, index) => (
-                    <div key={index} className="border-b grid grid-cols-3 pb-4 mb-4">
-                        <div className="flex items-center space-x-4">
+                    <div key={index} className="border-b pb-4 mb-4 grid grid-cols-6 gap-4">
+                        {/* User Info */}
+                        <div className="col-span-1 flex mt-2  space-x-4">
                             <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
                                 <span className="text-white font-bold">{review.name.split(" ").map(n => n[0]).join("")}</span>
                             </div>
                             <div>
-                                <h2 className="font-bold">{review.name} <br /> <span className="text-xs text-gray-500">Verified Buyer</span></h2>
+                                <h2 className="font-bold">{review.name}</h2>
+                                <span className="text-xs text-gray-500">Verified Buyer</span>
                             </div>
                         </div>
-                        <div>
 
+                        {/* Review Content */}
+                        <div className="col-span-4">
                             <h3 className="mt-2 font-semibold">{review.title}</h3>
                             <p className="text-yellow-500">{'⭐'.repeat(review.rating)}</p>
-
                             <p className="text-gray-700">{review.review}</p>
                             <p className="text-gray-500 text-sm mt-2">Product Reviewed: <span className="text-black">{review.product}</span></p>
                             <div className="mt-4 text-sm text-gray-500 flex items-center space-x-4">
@@ -90,9 +92,10 @@ const ReviewSection = () => {
                                 </button>
                             </div>
                         </div>
-                        <div>
-                            <span className="ml-auto text-gray-500 text-sm">{review.date}</span>
 
+                        {/* Date */}
+                        <div className="col-span-1 flex items-start justify-end">
+                            <span className="text-gray-500 text-sm">{review.date}</span>
                         </div>
                     </div>
                 ))}

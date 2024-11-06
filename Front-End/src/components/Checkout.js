@@ -100,7 +100,7 @@ const Checkout = () => {
                             />
                             <label className="block mb-2 font-medium">Phone Number *</label>
                             <div className="flex mb-4">
-                                <span className="inline-flex items-center px-3 border border-r-0 rounded-l bg-gray-200">🇳🇵</span>
+                                <span className="inline-flex text-sm items-center px-3 border border-r-0 rounded-l bg-gray-200">AUG</span>
                                 <input
                                     type="tel"
                                     name="phoneNumber"
@@ -122,17 +122,16 @@ const Checkout = () => {
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">2. Delivery Address</h2>
                             <label className="block mb-2 font-medium">City / District *</label>
-                            <select
+                            <input
                                 name="city"
                                 value={formData.city}
                                 onChange={handleChange}
                                 className={`w-full p-2 mb-4 border rounded ${errors.city ? 'border-red-500' : ''}`}
                                 required
-                            >
-                                <option value="">Select City</option>
-                                <option value="Kathmandu Inside Ring Road">Kathmandu Inside Ring Road</option>
-                                {/* Add more options as needed */}
-                            </select>
+                            />
+                            {/* <option value="">Select City</option>
+                                <option value="Kathmandu Inside Ring Road">Kathmandu Inside Ring Road</option> */}
+
                             {errors.city && <p className="text-red-500">{errors.city}</p>}
                             <label className="block mb-2 font-medium">Address *</label>
                             <input
@@ -144,7 +143,7 @@ const Checkout = () => {
                                 required
                             />
                             {errors.address && <p className="text-red-500">{errors.address}</p>}
-                            <label className="block mb-2 font-medium">Landmark</label>
+                            <label className="block mb-2 font-medium">PIN code</label>
                             <input
                                 type="text"
                                 name="landmark"

@@ -14,11 +14,25 @@ const Checkout = () => {
         landmark: '',
     });
     const [errors, setErrors] = useState({});
+    const [paymentMethod, setPaymentMethod] = useState('Cash on delivery'); // State to handle payment method
+    const [cardDetails, setCardDetails] = useState({ cardNumber: '', expiryDate: '', cvv: '' });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
+            [name]: value,
+        });
+    };
+
+    const handlePaymentMethodChange = (e) => {
+        setPaymentMethod(e.target.value);
+    };
+
+    const handleCardChange = (e) => {
+        const { name, value } = e.target;
+        setCardDetails({
+            ...cardDetails,
             [name]: value,
         });
     };
@@ -32,19 +46,33 @@ const Checkout = () => {
         return newErrors;
     };
 
+    const validateCardDetails = () => {
+        const newErrors = {};
+        if (paymentMethod === 'Card Payment') {
+            if (!cardDetails.cardNumber) newErrors.cardNumber = 'Card Number is required';
+            if (!cardDetails.expiryDate) newErrors.expiryDate = 'Expiry Date is required';
+            if (!cardDetails.cvv) newErrors.cvv = 'CVV is required';
+        }
+        return newErrors;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newErrors = validateForm();
+        const newErrors = { ...validateForm(), ...validateCardDetails() };
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             return;
         }
         setErrors({});
+
         const orderData = {
             ...formData,
             cartItems,
-            totalAmount: calculateTotal() + 100 // Assuming delivery charge is 100
+            totalAmount: calculateTotal() + 100, // Assuming delivery charge is 100
+            paymentMethod,
+            cardDetails, // Send card details only if Card Payment is selected
         };
+
         try {
             const response = await axios.post('http://localhost:5000/item/orders', orderData);
             console.log(response.data);
@@ -58,6 +86,7 @@ const Checkout = () => {
                 address: '',
                 landmark: '',
             });
+            setCardDetails({ cardNumber: '', expiryDate: '', cvv: '' });
             // Clear cart items after successful order placement
             setCartItems([]);
         } catch (error) {
@@ -129,9 +158,6 @@ const Checkout = () => {
                                 className={`w-full p-2 mb-4 border rounded ${errors.city ? 'border-red-500' : ''}`}
                                 required
                             />
-                            {/* <option value="">Select City</option>
-                                <option value="Kathmandu Inside Ring Road">Kathmandu Inside Ring Road</option> */}
-
                             {errors.city && <p className="text-red-500">{errors.city}</p>}
                             <label className="block mb-2 font-medium">Address *</label>
                             <input
@@ -159,19 +185,73 @@ const Checkout = () => {
                                     type="radio"
                                     name="paymentMethod"
                                     value="Cash on delivery"
-                                    checked
-                                    readOnly
+                                    checked={paymentMethod === 'Cash on delivery'}
+                                    onChange={handlePaymentMethodChange}
                                     className="mr-2"
                                 />
                                 <label className="font-medium">Cash on delivery</label>
                             </div>
+                            {paymentMethod === 'Cash on delivery' && (
+                                <div className="mb-4">
+                                    <button
+                                        type="submit"
+                                        className="w-full p-3 bg-blue-500 text-white font-bold rounded"
+                                    >
+                                        COD
+                                    </button>
+                                </div>
+                            )}
+                            <div className="mb-4">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="Card Payment"
+                                    checked={paymentMethod === 'Card Payment'}
+                                    onChange={handlePaymentMethodChange}
+                                    className="mr-2"
+                                />
+                                <label className="font-medium">Card Payment</label>
+                            </div>
+                            {paymentMethod === 'Card Payment' && (
+                                <div className="mb-4">
+                                    <label className="block mb-2 font-medium">Card Number</label>
+                                    <input
+                                        type="text"
+                                        name="cardNumber"
+                                        value={cardDetails.cardNumber}
+                                        onChange={handleCardChange}
+                                        className={`w-full p-2 mb-4 border rounded ${errors.cardNumber ? 'border-red-500' : ''}`}
+                                    />
+                                    {errors.cardNumber && <p className="text-red-500">{errors.cardNumber}</p>}
+                                    <label className="block mb-2 font-medium">Expiry Date</label>
+                                    <input
+                                        type="text"
+                                        name="expiryDate"
+                                        value={cardDetails.expiryDate}
+                                        onChange={handleCardChange}
+                                        className={`w-full p-2 mb-4 border rounded ${errors.expiryDate ? 'border-red-500' : ''}`}
+                                    />
+                                    {errors.expiryDate && <p className="text-red-500">{errors.expiryDate}</p>}
+                                    <label className="block mb-2 font-medium">CVV</label>
+                                    <input
+                                        type="text"
+                                        name="cvv"
+                                        value={cardDetails.cvv}
+                                        onChange={handleCardChange}
+                                        className={`w-full p-2 mb-4 border rounded ${errors.cvv ? 'border-red-500' : ''}`}
+                                    />
+                                    {errors.cvv && <p className="text-red-500">{errors.cvv}</p>}
+                                    <button
+                                        type="submit"
+                                        className="w-full p-3 bg-blue-500 text-white font-bold rounded"
+                                    >
+                                        Pay
+                                    </button>
+                                </div>
+                            )}
                         </div>
-                        {cartItems.length > 0 && (
-                            <button type="submit" className="w-full p-3 bg-blue-500 text-white font-bold rounded">Place Order</button>
-                        )}
                     </form>
                 </div>
-
                 <div className="w-full pt-6  order-summerry lg:sticky lg:top-4 self-start">
 
                     <div className="mb-6 bg-white rounded-lg shadow-md">
@@ -202,8 +282,6 @@ const Checkout = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     );

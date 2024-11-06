@@ -55,7 +55,8 @@ const verifyJWT = (req, res, next) => {
 // Routes
 app.post('/signup', async (req, res) => {
     try {
-        const { firstName, lastName, email, password } = req.body;
+        // const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, gender, mobile } = req.body;
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -64,8 +65,11 @@ app.post('/signup', async (req, res) => {
             firstName,
             lastName,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            gender,  // New field
+            mobile   // New field
         });
+
 
         await newUser.save();
 
@@ -113,9 +117,57 @@ app.use('/item', orderRoutes); // Use the order routes
 
 
 // Protected route
-app.get('/dashboard', verifyJWT, (req, res) => {
-    res.status(200).json({ message: 'Welcome to Dashboard!' });
+// app.get('/dashboard', verifyJWT, (req, res) => {
+//     res.status(200).json({ message: 'Welcome to Dashboard!' });
+// });
+// Dashboard route to fetch user profile data
+app.get('/dashboard', verifyJWT, async (req, res) => {
+    try {
+        // Fetch user data using the userId from the decoded JWT token
+        const user = await Auth.findById(req.userId).select('-password'); // Exclude password field
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Send user profile data as response
+        res.status(200).json({ profile: user });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
+
+
+// Update user profile
+app.put('/update-profile', verifyJWT, async (req, res) => {
+    try {
+        const { firstName, lastName, gender, email, mobile, newPassword } = req.body;
+        const userId = req.userId;
+
+        const updatedData = {
+            firstName,
+            lastName,
+            gender,
+            email,
+            mobile
+        };
+
+        if (newPassword) {
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+            updatedData.password = hashedPassword;
+        }
+
+        const updatedUser = await Auth.findByIdAndUpdate(userId, updatedData, { new: true });
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Failed to update profile' });
+    }
+});
+
+
 app.get('/addpost', verifyJWT, (req, res) => {
     res.status(200).json({ message: 'Welcome to mqttp!' });
 });

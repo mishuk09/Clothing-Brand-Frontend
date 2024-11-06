@@ -58,14 +58,14 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
 
 
                             <li class="relative group pb-1">
-                                <a href="#" class="desktop-item">NEW ARRIVAL</a>
+                                <a href="/new" class="desktop-item">NEW ARRIVAL</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
 
 
                             </li>
 
                             <li className=' '>
-                                <a href="#" class="desktop-item">MEN</a>
+                                <a href="men" class="desktop-item">MEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
                                 <div class="mega-box">
                                     <div class="content  ">
@@ -106,7 +106,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                             </li>
 
                             <li>
-                                <a href="#" class="desktop-item">WOMEN</a>
+                                <a href="/women" class="desktop-item">WOMEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
                                 <div class="mega-box">
                                     <div class="content">

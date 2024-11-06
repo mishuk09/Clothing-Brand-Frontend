@@ -62,35 +62,32 @@ const ProductPage = ({ toggleCart }) => {
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : (
+         
           <div className="flex flex-col md:flex-row md:space-x-8">
             <div className="md:w-1/2">
               <img
-                className="w-full h-auto rounded-lg shadow-md"
+                className="w-full h-full object-cover rounded-lg shadow-md"
                 src={product.img}
                 alt={product.title}
               />
             </div>
-            <div className="md:w-1/2 mt-4 md:mt-0">
-              <span className='uppercase '>{product.category}</span>
-              <h1 className="text-3xl   font-bold mt-2 mb-4">{product.title}</h1>
+            <div className="md:w-1/2 lg:sticky self-start mt-4 md:mt-0 top-0">
+              <span className='uppercase'>{product.category}</span>
+              <h1 className="text-3xl font-bold mt-2 mb-4">{product.title}</h1>
 
               <div>
                 <div>
                   <span className="text-xl font-semibold">${product.newPrice}</span>
-                  <sup className="text-sm text-gray-800"> 99</sup> {/* Optional: you can add a label or just keep the sup with price */}
+                  <sup className="text-sm text-gray-800"> 99</sup>
                   <span className="line-through ms-2 text-gray-500">${product.oldPrice}</span>
                 </div>
               </div>
-
-
 
               <p className="text-green-500 font-bold mt-2 mb-2">
                 {Math.round(((product.oldPrice - product.newPrice) / product.oldPrice) * 100)}% OFF
               </p>
 
-
               <StarRating rating={5} reviews={5} />
-
 
               <div className='mt-6'>
                 <p className="text-gray-700 mb-3">{stripHtmlTags(product.description)}</p>
@@ -104,7 +101,7 @@ const ProductPage = ({ toggleCart }) => {
                     <button
                       key={color}
                       aria-label={`Select ${color}`}
-                      className={`relative    w-10 h-10 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75 ${selectedColor === color ? 'ring-1 ring-black' : ''}`}
+                      className={`relative w-10 h-10 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75 ${selectedColor === color ? 'ring-1 ring-black' : ''}`}
                       style={{ backgroundColor: color.toLowerCase() }}
                       onClick={() => setSelectedColor(color)}
                     >
@@ -123,7 +120,7 @@ const ProductPage = ({ toggleCart }) => {
                     <button
                       key={size}
                       aria-label={`Select size ${size}`}
-                      className={`w-10 h-10 flex items-center justify-center text-base   border ${selectedSize === size ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'}`}
+                      className={`w-10 h-10 flex items-center justify-center text-base border ${selectedSize === size ? 'bg-gray-800 text-white' : 'bg-white text-gray-700'}`}
                       onClick={() => setSelectedSize(size)}
                     >
                       {size}
@@ -132,10 +129,8 @@ const ProductPage = ({ toggleCart }) => {
                 </div>
               </div>
 
-
-
-              <div className="mb-4   items-center">
-                <label className="text-sm  font-semibold text-gray-700 mr-4">Quantity</label>
+              <div className="mb-4 items-center">
+                <label className="text-sm font-semibold text-gray-700 mr-4">Quantity</label>
                 <div className="flex mt-3 items-center">
                   <button
                     aria-label="Decrease quantity"
@@ -144,7 +139,7 @@ const ProductPage = ({ toggleCart }) => {
                   >
                     &ndash;
                   </button>
-                  <span className="w-12 text-center text-gray-800  ">{quantity}</span>
+                  <span className="w-12 text-center text-gray-800">{quantity}</span>
                   <button
                     aria-label="Increase quantity"
                     className="px-3 py-1 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
@@ -155,20 +150,15 @@ const ProductPage = ({ toggleCart }) => {
                 </div>
               </div>
 
-
               <button
-                className="add-to-cart mt-10 text-white w-full px-6 py-2 rounded-lg shadow-md  transition duration-300"
+                className="add-to-cart mt-10 text-white w-full px-6 py-2 rounded-lg shadow-md transition duration-300"
                 onClick={handleAddToCart}
               >
                 Add to Cart
               </button>
-
-              {/* <div className="mt-8">
-                <h2 className="text-2xl font-bold mb-4">Description</h2>
-                <p className="text-gray-700 mb-2">{stripHtmlTags(product.description)}</p>
-              </div> */}
             </div>
           </div>
+
         )
       }
 

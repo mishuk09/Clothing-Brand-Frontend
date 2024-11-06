@@ -1,12 +1,38 @@
+// Schema/Auth.js
+
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    email: { type: String, unique: true },
-    password: String
+const authSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        enum: ['Male', 'Female', 'Other'],
+        default: 'Other'
+    },
+    mobile: {
+        type: String,
+        trim: true
+    }
 });
 
-const Auth = mongoose.model('Auth', userSchema);
-
-module.exports = Auth;
+module.exports = mongoose.model('Auth', authSchema);

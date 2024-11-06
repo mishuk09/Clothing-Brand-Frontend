@@ -36,21 +36,21 @@ const Footer = () => {
                             <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faPinterest} /></p>
                             <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faEnvelope} /></p>
                             <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><i
-              size='xl'                   class="fa-brands fa-square-whatsapp"></i></p>
+                                size='xl' class="fa-brands fa-square-whatsapp"></i></p>
                         </div>
                     </div>
 
                     <div class='w-full footer-service h-full leading-6 flex flex-col overflow-hidden'>
                         <p class="text-black cursor-pointer pt-4 md:pt-12 pb-3 text-[15px] font-bold">About us
                         </p>
-                        <a href="/Tearms & Condition/privacy.html" class="text-[14px]   cursor-pointer pb-1">Privacy &
+                        <a href="/privacy" class="text-[14px]   cursor-pointer pb-1">Privacy &
                             policy</a>
-                        <a href="/Tearms & Condition/about.html" class="text-[14px] cursor-pointer pb-1">About us</a>
-                        <a href="/Tearms & Condition/fourzero.html" class="text-[14px] cursor-pointer pb-1">404</a>
-                        <a href="/Tearms & Condition/contact.html" class="text-[14px] cursor-pointer pb-1">Contact
+                        <a href="/about" class="text-[14px] cursor-pointer pb-1">About us</a>
+                        <a href="/404" class="text-[14px] cursor-pointer pb-1">404</a>
+                        <a href="/contact" class="text-[14px] cursor-pointer pb-1">Contact
                             us</a>
-                        <a href="/Tearms & Condition/fags.html" class="text-[14px] cursor-pointer pb-1">FAQ's</a>
-                        <a href="#" class="text-[14px] cursor-pointer pb-1">My Account</a>
+                        <a href="/faqs" class="text-[14px] cursor-pointer pb-1">FAQ's</a>
+                        <a href="signin" class="text-[14px] cursor-pointer pb-1">My Account</a>
                     </div>
 
                     <div class='w-full footer-service h-full leading-6 flex flex-col overflow-hidden'>

@@ -51,8 +51,8 @@ function App() {
           {/* <Route path="/orders" element={<Orders />} /> Corrected route for Orders component */}
 
           <Route path='/shoes' element={<Shoes />} />
-          <Route path='/cloth' element={<Cloth />} />
-          <Route path='/gloves' element={<Gloves />} />
+          <Route path='/men' element={<Cloth />} />
+          <Route path='/women' element={<Gloves />} />
           <Route path='/kitchen' element={<Kitchen />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />

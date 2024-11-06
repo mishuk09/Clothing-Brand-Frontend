@@ -629,6 +629,22 @@ h1 {
  color: var(--primary-font-color); 
 }
 
+
+
+.edit-btn-2{
+  background-color: var(--primary-color);
+  width: 50%;
+  color: var(--primary-font-color);
+  padding: 8px;
+  
+}
+.edit-btn-2:hover{
+  background-color: var(--primary-hover-color);
+  width: 50%;
+  color: var(--primary-font-color);
+  padding: 8px;
+
+}
 /*#################################################
 ####                                            ####
 ####          Footer  section START           ####

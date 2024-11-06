@@ -12,6 +12,15 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("tab1");
     const [editFormVisible, setEditFormVisible] = useState(null);
+    const [profile, setProfile] = useState({
+        firstName: '',
+        lastName: '',
+        gender: '',
+        email: '',
+        mobile: '',
+        newPassword: '',
+        confirmPassword: '',
+    });
 
     // Function to toggle the edit form visibility
     const toggleEditForm = (formType) => {
@@ -42,7 +51,7 @@ const Dashboard = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                console.log(response.data);
+                setProfile(response.data.profile);
             } catch (error) {
                 console.error('Error fetching data:', error.response ? error.response.data : error.message);
                 if (error.response && (error.response.status === 401 || error.response.status === 403)) {
@@ -53,6 +62,41 @@ const Dashboard = () => {
 
         fetchData();
     }, [navigate]);
+
+
+    const handleChange = (e) => {
+        setProfile({
+            ...profile,
+            [e.target.id]: e.target.value,
+        });
+    };
+
+
+    const handleSave = async () => {
+        const token = localStorage.getItem('token');
+        try {
+            await axios.put(
+                'http://localhost:5000/update-profile',
+                {
+                    firstName: profile.firstName,
+                    lastName: profile.lastName,
+                    gender: profile.gender,
+                    email: profile.email,
+                    mobile: profile.mobile,
+                    newPassword: profile.newPassword === profile.confirmPassword ? profile.newPassword : null,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            alert('Profile updated successfully!');
+        } catch (error) {
+            console.error('Error updating profile:', error.response ? error.response.data : error.message);
+        }
+    };
+
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -117,108 +161,95 @@ const Dashboard = () => {
                     <div className="tab-content-2 bg-white mb-[100px] md:border-l">
                         {activeTab === "tab1" && (
                             <div className="tab">
+                                <h2 className="text-gray-600">Welcome <span className="font-semibold">{profile.lastName}</span></h2>
 
-                                <h2 class="text-gray-600">Welcome <span class="font-semibold">Hasan!</span> (Not ? <span
-                                    class="font-semibold me-2">Hasan</span><span class="underline">Logout!</span>)
-                                </h2>
-
-
-
-
-
-
-
-
-                                <p class="text-[18px] font-medium mt-7">Personal Information </p>
-                                <div class="mb-8">
-                                    <div class=" sm:flex gap-6 personal-inout text-[14px] mt-3">
-                                        <input class="border outline-none px-2" placeholder="Hasan Mahmud" type="text" name=""
-                                            id="firstName" />
-                                        <input class="border outline-none mt-4 sm:mt-0 px-2" placeholder="Khan" type="text" name=""
-                                            id="lastName" />
-
-                                    </div>
-                                    {/* <!-- <button id="saveBtn" class="invisible  mt-2">Save</button> --> */}
-                                </div>
-
-                                <p class="text-[18px] font-medium  "> Your Gender
-                                </p>
-                                <div class="flex gap-4 mt-3">
-                                    <div class="  profile-box-2  flex  text-[14px] text-gray-600 items-center">
-                                        <label>
-                                            <p class="flex items-center">
-                                                <input type="checkbox" class="me-2" /> Male
-                                            </p>
-                                        </label>
-                                    </div>
-
-                                    <div class="profile-box-2">
-                                        <label>
-                                            <p class="flex items-center">
-                                                <input type="checkbox" class="me-2" /> Female
-                                            </p>
-                                        </label>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="mt-8 ">
-                                    <div class=" sm:flex gap-6 personal-inout text-[14px]  ">
-                                        <div class=" w-full   ">
-                                            <p class="text-[18px] font-medium ">Email Address
-                                                {/* <!-- <span class="ms-2 info-idit2 cursor-pointer">Edit</span> --> */}
-                                            </p>
-
-                                            <div class="flex flex-col  personal-inout  text-[14px] pt-3">
-                                                <input class="border outline-none px-2" placeholder="hasaninfo09@gmail.com" type="text"
-                                                    name="" id="email" />
-                                                {/* <!-- <button id="saveBtnEmail" class="invisible mt-2">Save</button> --> */}
-                                            </div>
-                                        </div>
-                                        <div class=" w-full  ">
-
-                                            <p class=" text-[18px] font-medium   ">Mobile Number
-                                                {/* <!-- <span class="ms-2 cursor-pointer  info-idit3">Edit</span> --> */}
-                                            </p>
-
-                                            <div class="flex flex-col   personal-inout text-[14px] pt-3">
-                                                <input class="border outline-none px-2" placeholder="+91 834375639" type="text" name=""
-                                                    id="mobile" />
-                                                {/* <!-- <button id="saveBtnMobile" class="invisible mt-2">Save</button> --> */}
-                                            </div>
-                                        </div>
+                                <p className="text-[18px] font-medium mt-7">Personal Information</p>
+                                <div className="mb-8">
+                                    <div className="sm:flex gap-6 personal-inout text-[14px] mt-3">
+                                        <input
+                                            className="border outline-none px-2"
+                                            placeholder="First Name"
+                                            type="text"
+                                            id="firstName"
+                                            value={profile.firstName}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            className="border outline-none mt-4 sm:mt-0 px-2"
+                                            placeholder="Last Name"
+                                            type="text"
+                                            id="lastName"
+                                            value={profile.lastName}
+                                            onChange={handleChange}
+                                        />
                                     </div>
                                 </div>
 
-
-
-                                <p class="text-[18px] font-medium mt-8">Reset Password
-                                    {/* <!-- <span class="ms-2 cursor-pointer   info-idit4">Edit</span> --> */}
-                                </p>
-                                <div class="pt-3 ">
-
-
-                                    <div class=" sm:flex  gap-4 text-[14px] personal-inout leading-2 ">
-                                        <div class="w-full">
-                                            <label for="newPassword">New Password</label> <br />
-                                            <input class="border outline-none px-2 mt-3" placeholder="" type="password"
-                                                name="newPassword" id="newPassword" />
-                                        </div>
-                                        <div class="w-full">
-                                            <label for="confirmPassword">Confirm New Password</label><br />
-                                            <input class="border outline-none px-2 mt-3" placeholder="" type="password"
-                                                name="confirmPassword" id="confirmPassword" />
-                                        </div>
-                                    </div>
-                                    <div class="mt-2">
-
-                                        <button id="saveBtnPass" class="invisible">Save</button>
-                                    </div>
+                                <p className="text-[18px] font-medium">Your Gender</p>
+                                <div className="flex gap-4 mt-3">
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Male"
+                                            checked={profile.gender === 'Male'}
+                                            onChange={() => setProfile({ ...profile, gender: 'Male' })}
+                                        /> Male
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Female"
+                                            checked={profile.gender === 'Female'}
+                                            onChange={() => setProfile({ ...profile, gender: 'Female' })}
+                                        /> Female
+                                    </label>
                                 </div>
-                                <button id="saveBtnMobile" class=" mt-2">Save</button>
+                                <div className="w-1/2  gap-6 personal-inout text-[14px] mt-3">
+                                    <p className="text-[18px] font-medium mt-8">Email Address</p>
+                                    <input
+                                        className="border outline-none px-2 mt-3"
+                                        placeholder="Email"
+                                        type="email"
+                                        id="email"
+                                        value={profile.email}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="w-1/2  gap-6 personal-inout text-[14px] mt-3">
 
+                                    <p className="text-[18px] font-medium mt-8">Mobile Number</p>
+                                    <input
+                                        className="border outline-none px-2 mt-3"
+                                        placeholder="Mobile Number"
+                                        type="text"
+                                        id="mobile"
+                                        value={profile.mobile}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+
+                                <p className="text-[18px] font-medium mt-8">Reset Password</p>
+                                <div className="sm:flex gap-6 personal-inout text-[14px] mt-3">
+                                    <input
+                                        className="border outline-none px-2 mt-3"
+                                        placeholder="New Password"
+                                        type="password"
+                                        id="newPassword"
+                                        value={profile.newPassword}
+                                        onChange={handleChange}
+                                    />
+                                    <input
+                                        className="border outline-none px-2 mt-3"
+                                        placeholder="Confirm New Password"
+                                        type="password"
+                                        id="confirmPassword"
+                                        value={profile.confirmPassword}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <button onClick={handleSave} className="mt-6 rounded-md edit-btn-2">Save</button>
                             </div>
                         )}
                         {activeTab === "tab2" && (

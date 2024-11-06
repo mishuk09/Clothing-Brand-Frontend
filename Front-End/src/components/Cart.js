@@ -45,18 +45,18 @@ const Cart = ({ isOpen, toggleCart }) => {
                             <p>Your cart is empty</p>
                         ) : (
                             cartItems.map((item, index) => (
-                                <div key={`${item.id}-${index}`} className="mb-4 flex gap-2">
-                                    <div>
-                                        <img className='w-[100px]' src={item.img} alt={item.title} />
+                                <div key={`${item.id}-${index}`} className="mb-4 pb-2 border-b flex gap-4">
+                                    <div className='w-'>
+                                        <img className='w-[120px] h-[100px] object-cover rounded' src={item.img} alt={item.title} />
                                     </div>
-                                    <div>
-                                        <p className="font-semibold">{item.title}</p>
-                                        <p>Variant: {item.color} / {item.size}</p>
-                                        <p>Quantity: {item.quantity}</p>
-                                        <p className="mt-2">रू {item.price * item.quantity}</p>
+                                    <div className='w-full relative'>
+                                        <p className="font-semibold"> {item.title.split(' ').slice(0, 3).join(' ')}</p>
+                                        <p className='text-sm'>Variant: {item.color} / {item.size}</p>
+                                        <p className='text-sm'>Qty: {item.quantity}</p>
+                                        <p className="mt-2 font-bold ">$ {item.price * item.quantity}</p>
                                         <button
                                             onClick={() => removeFromCart(item.id, item.color, item.size)}
-                                            className="text-red-500 mt-2"
+                                            className="text-red-500 absolute top-0 right-2 mt-1 text-sm"
                                         >
                                             Remove
                                         </button>
@@ -69,7 +69,7 @@ const Cart = ({ isOpen, toggleCart }) => {
                     <div className="border-t p-4">
                         <div className="flex justify-between">
                             <span className="font-semibold">Total</span>
-                            <span>रू {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+                            <span>र$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
                         </div>
                         <div className="flex justify-between mt-2">
                             <span className="font-semibold">Shipping</span>

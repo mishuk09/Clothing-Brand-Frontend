@@ -8,11 +8,14 @@ import { useCart } from './CartContext'; // Import the useCart hook
 import people from './people.png';
 import cart from './shopping.png';
 import search from './search.png';
+import SearchTab from './SearchTab';
 
 const Navbar = ({ toggleCart, isCartOpen }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { cartItems } = useCart(); // Access cart items from the context
+    const [showSearch, setShowSearch] = useState(false);
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -22,6 +25,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+    const toggleSearch = () => setShowSearch(!showSearch);
 
     return (
         <div className=' '>
@@ -146,7 +150,8 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                     </div>
                     <div className="hidden lg:flex lg:items-center lg:space-x-4 md:justify-center">
                         <div className="flex gap-6">
-                            <div><img className='w-6' src={search} alt="" /></div>
+                            <div><img className='w-6' onClick={toggleSearch} src={search} alt="" /></div>
+                            {showSearch && <SearchTab closeSearch={toggleSearch} />}
                             <div onClick={toggleCart} className="cursor-pointer relative">
                                 <img className='w-6' src={cart} alt="" />
                                 {/* Display the number of items in the cart */}

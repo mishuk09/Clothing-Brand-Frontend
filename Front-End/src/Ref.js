@@ -4,7 +4,6 @@ import mainlogo from './logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faMagnifyingGlass, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Cart from './Cart'; // Import the Cart component
-import { useCart } from './CartContext'; // Import the useCart hook
 import people from './people.png';
 import cart from './shopping.png';
 import search from './search.png';
@@ -12,7 +11,6 @@ import search from './search.png';
 const Navbar = ({ toggleCart, isCartOpen }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { cartItems } = useCart(); // Access cart items from the context
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -53,11 +51,17 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                         <ul class="nav-links">
 
 
+                            {/* <li className='hover:border-b translate-x-2'>
+                                <a href="#" class="desktop-item">NEW ARIVAL</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                
+                            </li> */}
                             <li class="relative group pb-1">
                                 <a href="#" class="desktop-item">NEW ARRIVAL</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
 
-
+                                {/* <!-- Border animation using ::before --> */}
+                                {/* <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-500 transition-all duration-500 ease-out group-hover:w-full"></span> */}
                             </li>
 
                             <li className=' '>
@@ -147,15 +151,8 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                     <div className="hidden lg:flex lg:items-center lg:space-x-4 md:justify-center">
                         <div className="flex gap-6">
                             <div><img className='w-6' src={search} alt="" /></div>
-                            <div onClick={toggleCart} className="cursor-pointer relative">
+                            <div onClick={toggleCart} className="cursor-pointer">
                                 <img className='w-6' src={cart} alt="" />
-                                {/* Display the number of items in the cart */}
-                                {cartItems.length > 0 && (
-                                    <span className="absolute w-4 bg-gray-600 top-0 right-0 text-center text-xs font-semibold text-white rounded-full px-1">
-                                        {cartItems.length}
-                                    </span>
-
-                                )}
                             </div>
                             <div>
                                 <Link to={isAuthenticated ? '/dashboard' : '/signin'}>

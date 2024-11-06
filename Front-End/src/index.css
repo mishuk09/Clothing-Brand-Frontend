@@ -479,16 +479,17 @@ nav input {
   color: var(--primary-font-color);
 }
 
-.shop-btn:hover{
+.shop-btn:hover {
   background-color: var(--primary-hover-color);
 }
 
 
-.add-to-cart{
+.add-to-cart {
   background-color: var(--primary-color);
   color: var(--primary-font-color);
 }
-.add-to-cart:hover{
+
+.add-to-cart:hover {
   background-color: var(--primary-hover-color);
   color: var(--primary-font-color);
 }
@@ -624,27 +625,29 @@ h1 {
 }
 
 
-.review-btn{
- background-color: var(--primary-color);
- color: var(--primary-font-color); 
+.review-btn {
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
 }
 
 
 
-.edit-btn-2{
+.edit-btn-2 {
   background-color: var(--primary-color);
   width: 50%;
   color: var(--primary-font-color);
   padding: 8px;
-  
+
 }
-.edit-btn-2:hover{
+
+.edit-btn-2:hover {
   background-color: var(--primary-hover-color);
   width: 50%;
   color: var(--primary-font-color);
   padding: 8px;
 
 }
+
 /*#################################################
 ####                                            ####
 ####          Footer  section START           ####
@@ -1472,4 +1475,100 @@ h1 {
 
 .terms-cart {
   font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ######################################### */
+
+/* .coundown-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+} */
+
+@media only screen and (max-width:768px) {
+  .coundown {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+}
+
+
+
+.hint-div {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+@media only screen and (max-width:768px) {
+  .hint-div {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+}
+
+
+
+
+.factory-btn {
+  width: 200px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 14px;
+  transition: color 0.3s, background-color 0.3s;
+
+}
+
+.factory-btn:hover {
+  width: 200px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 14px;
+
+}
+
+
+
+
+
+.unique-think {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+@media only screen and (max-width:640px) {
+
+  .why-us {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+
+  }
+}
+
+@media only screen and (max-width:640px) {
+
+  .unique-think {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
 }

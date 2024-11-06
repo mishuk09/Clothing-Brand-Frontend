@@ -71,12 +71,12 @@ const Checkout = () => {
     };
 
     return (
-        <div className="container mx-auto p-4 lg:px-0">
-            <div className="text-center mb-10">
+        <div className=" mx-auto p-4 lg:px-0">
+            <div className="text-center pb-6  border-b-2  ">
                 <h1 className="text-2xl mt-10 font-bold">Checkout</h1>
             </div>
-            <div className='flex flex-col lg:flex-row gap-10 mt-10'>
-                <div className='w-full'>
+            <div className='flex container flex-col lg:flex-row gap-10 '>
+                <div className='w-full border-r-2 pe-10 pt-6'>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">1. General Information</h2>
@@ -173,7 +173,8 @@ const Checkout = () => {
                     </form>
                 </div>
 
-                <div className='w-full'>
+                <div className="w-full pt-6  order-summerry lg:sticky lg:top-4 self-start">
+
                     <div className="mb-6 bg-white rounded-lg shadow-md">
                         <h2 className="text-xl font-semibold mb-4 px-6 py-4 bg-gray-100 rounded-t-lg">Order Summary</h2>
                         <div className="max-h-60 overflow-y-auto">
@@ -202,6 +203,7 @@ const Checkout = () => {
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>

@@ -1,95 +1,216 @@
-import React from 'react';
+not dropdown make filter like ticmark and make it functiona;
 
-const reviews = [
-    {
-        name: "Lyndel C.",
-        date: "14/08/24",
-        title: "Light weight trousers",
-        review:
-            "I love them, great fit and so light, don’t crush easily. I now really really want the olive coloured pair as well.",
-        rating: 5,
-        product: "Relaxed Pant",
-        helpful: 0,
-    },
-    {
-        name: "Cecilia S.",
-        date: "11/03/24",
-        title: "Love these pants - easy to wear, lovely style",
-        review:
-            "I have also bought four pairs of these pants! Light, easy to wear, lovely style. My jeans have been relegated to the back burner throughout our Perth summer in favour of these beautiful pants.",
-        rating: 5,
-        product: "Relaxed Pant",
-        helpful: 0,
-    },
-    {
-        name: "Catherine",
-        date: "01/11/23",
-        title: "Light and simple nice little pockets",
-        review:
-            "Light and simple nice little pockets... thought I was buying slightly heavier ones I'd had before but these will be a good work and general summer and longer basic.",
-        rating: 5,
-        product: "Relaxed Pant",
-        helpful: 0,
-    },
-    {
-        name: "Susie B.",
-        date: "18/09/23",
-        title: "My 4th pair so",
-        review: "My 4th pair so that says it all.",
-        rating: 4,
-        product: "Relaxed Pant",
-        helpful: 0,
-    },
-];
 
-const ReviewSection = () => {
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
+const Collection = () => {
+    const [posts, setPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
+    const [filterOpen, setFilterOpen] = useState(false);
+    const [wishlist, setWishlist] = useState(JSON.parse(localStorage.getItem('wishlist')) || {});
+    const [filters, setFilters] = useState({
+        color: '',
+        priceRange: [0, 1000],
+        type: '',
+        length: '',
+        size: '',
+        stock: '',
+        brand: ''
+    });
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/posts')
+            .then(response => {
+                setPosts(response.data);
+                setFilteredPosts(response.data);
+            })
+            .catch(error => console.log(error));
+    }, []);
+
+    const toggleFilterPanel = () => {
+        setFilterOpen(!filterOpen);
+    };
+
+    const handleWishlist = (productId) => {
+        const updatedWishlist = { ...wishlist, [productId]: !wishlist[productId] };
+        setWishlist(updatedWishlist);
+        localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    };
+
+    const applyFilters = () => {
+        const { color, priceRange, type, length, size, stock, brand } = filters;
+        const filtered = posts.filter(product =>
+            (!color || product.color.includes(color)) &&
+            (product.price >= priceRange[0] && product.price <= priceRange[1]) &&
+            (!type || product.type === type) &&
+            (!length || product.length === length) &&
+            (!size || product.size === size) &&
+            (!stock || (stock === 'in' ? product.stock > 0 : product.stock === 0)) &&
+            (!brand || product.brand === brand)
+        );
+        setFilteredPosts(filtered);
+    };
+
+    const handleFilterChange = (type, value) => {
+        setFilters(prev => ({ ...prev, [type]: value }));
+        applyFilters();  // Trigger filtering on change
+    };
+
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <div className="text-center">
-                <h1 className="text-2xl font-semibold">4.8 ⭐ Based on 4 reviews</h1>
-                <button className="mt-4 px-4 py-2 bg-black text-white font-semibold rounded">Write A Review</button>
+        <div className="container collection pb-10">
+            <div className="text-center pt-10">
+                <p className="text-lg font-semibold text-start pl-4">Collections / Weekend Edit</p>
+                <h1 className="text-3xl italic font-bold mt-2 text-start pl-4">Weekend Edit</h1>
+                <div className="flex justify-start gap-8 mt-4 pl-4">
+                    <button onClick={toggleFilterPanel} className="text-gray-500 hover:text-black">Filter</button>
+                </div>
             </div>
-
-            <div className="mt-8">
-                {reviews.map((review, index) => (
-                    <div key={index} className="border-b pb-4 mb-4 grid grid-cols-6 gap-4">
-                        {/* User Info */}
-                        <div className="col-span-1 flex mt-2  space-x-4">
-                            <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-                                <span className="text-white font-bold">{review.name.split(" ").map(n => n[0]).join("")}</span>
-                            </div>
-                            <div>
-                                <h2 className="font-bold">{review.name}</h2>
-                                <span className="text-xs text-gray-500">Verified Buyer</span>
-                            </div>
+            <div className="flex">
+                {filterOpen && (
+                    <div className="w-64 bg-gray-100 p-4 shadow-lg">
+                        <h2 className="text-xl font-bold mb-4">Filter Options</h2>
+                        {/* Color Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Color</label>
+                            <select
+                                onChange={(e) => handleFilterChange('color', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="black">Black</option>
+                                <option value="blue">Blue</option>
+                                <option value="red">Red</option>
+                                {/* Add more colors */}
+                            </select>
                         </div>
-
-                        {/* Review Content */}
-                        <div className="col-span-4">
-                            <h3 className="mt-2 font-semibold">{review.title}</h3>
-                            <p className="text-yellow-500">{'⭐'.repeat(review.rating)}</p>
-                            <p className="text-gray-700">{review.review}</p>
-                            <p className="text-gray-500 text-sm mt-2">Product Reviewed: <span className="text-black">{review.product}</span></p>
-                            <div className="mt-4 text-sm text-gray-500 flex items-center space-x-4">
-                                <span>Was this review helpful?</span>
-                                <button className="flex items-center text-gray-600 space-x-1">
-                                    <span>👍</span> <span>{review.helpful}</span>
-                                </button>
-                                <button className="flex items-center text-gray-600 space-x-1">
-                                    <span>👎</span> <span>{review.helpful}</span>
-                                </button>
-                            </div>
+                        {/* Price Range Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Price Range</label>
+                            <input
+                                type="range"
+                                min="0"
+                                max="1000"
+                                step="50"
+                                value={filters.priceRange[1]}
+                                onChange={(e) => handleFilterChange('priceRange', [0, parseInt(e.target.value)])}
+                                className="w-full"
+                            />
+                            <p className="text-sm">Up to ${filters.priceRange[1]}</p>
                         </div>
-
-                        {/* Date */}
-                        <div className="col-span-1 flex items-start justify-end">
-                            <span className="text-gray-500 text-sm">{review.date}</span>
+                        {/* Type Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Type</label>
+                            <select
+                                onChange={(e) => handleFilterChange('type', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="blouse">Blouse</option>
+                                <option value="jumper">Jumper</option>
+                                {/* Add more types */}
+                            </select>
+                        </div>
+                        {/* Length Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Length</label>
+                            <select
+                                onChange={(e) => handleFilterChange('length', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="short-sleeve">Short Sleeve</option>
+                                <option value="long-sleeve">Long Sleeve</option>
+                                {/* Add more lengths */}
+                            </select>
+                        </div>
+                        {/* Size Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Size</label>
+                            <select
+                                onChange={(e) => handleFilterChange('size', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="xs">XS</option>
+                                <option value="s">S</option>
+                                {/* Add more sizes */}
+                            </select>
+                        </div>
+                        {/* Stock Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Stock</label>
+                            <select
+                                onChange={(e) => handleFilterChange('stock', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="in">In Stock</option>
+                                <option value="out">Out of Stock</option>
+                            </select>
+                        </div>
+                        {/* Brand Filter */}
+                        <div className="mb-4">
+                            <label className="block mb-2">Brand</label>
+                            <select
+                                onChange={(e) => handleFilterChange('brand', e.target.value)}
+                                className="w-full p-2 border rounded"
+                            >
+                                <option value="">All</option>
+                                <option value="ark-basics">Ark Basics</option>
+                                <option value="the-ark">The Ark</option>
+                            </select>
                         </div>
                     </div>
-                ))}
+                )}
+                {/* Products Grid */}
+                <div className="container grid grid-cols-4 mt-6 mx-auto gap-6 px-4">
+                    {filteredPosts.map(product => (
+                        <div key={product._id} className="relative bg-white rounded-sm shadow-md">
+                            <Link to={`/product/${product._id}`}>
+                                <div className="overflow-hidden rounded-sm">
+                                    <img src={product.img} alt={product.title} className="w-full h-[350px] object-cover transform hover:scale-110 transition-transform duration-300" />
+                                    <span className="absolute top-2 left-2 bg-gray-200 text-red-400 text-xs px-2 py-1 rounded">Sale</span>
+                                </div>
+                            </Link>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleWishlist(product._id);
+                                }}
+                                className="absolute top-2 right-2 p-2"
+                            >
+                                <FontAwesomeIcon className={`w-4 ${wishlist[product._id] ? 'text-red-600' : 'text-gray-400'}`} icon={faHeart} />
+                            </button>
+                            <div className="ps-2">
+                                <div className="flex space-x-1 pt-2">
+                                    {product.color.map(color => (
+                                        <button
+                                            key={color}
+                                            aria-label={`Select ${color}`}
+                                            className="relative w-8 h-8 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75"
+                                            style={{ backgroundColor: color.toLowerCase() }}
+                                        />
+                                    ))}
+                                </div>
+                                <h2 className="text-lg product-card__title text-start pt-3 font-semibold text-gray-900">
+                                    {product.title.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()).substring(0, 20)}{product.title.length > 20 && '...'}
+                                </h2>
+                                <div className="flex space-x-2 py-3">
+                                    <span className="text-md font-semibold">{`৳${product.price}`}</span>
+                                    {product.compare_at && <span className="text-gray-500 text-sm line-through">{`৳${product.compare_at}`}</span>}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
 };
 
-export default ReviewSection;
+export default Collection;

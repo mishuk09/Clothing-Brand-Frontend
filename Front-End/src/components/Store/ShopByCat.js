@@ -36,9 +36,9 @@ const ShopByCat = () => {
 
                 <button className='h-10 outlet-section-btn-2     mt-6 px-4    rounded-sm'>SHOP THE SELL</button>
             </div>
-            <div>
+            {/* <div>
                 <Info />
-            </div>
+            </div> */}
 
         </div>
     );

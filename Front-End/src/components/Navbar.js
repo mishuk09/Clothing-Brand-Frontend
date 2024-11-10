@@ -17,6 +17,14 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
     const [showSearch, setShowSearch] = useState(false);
 
 
+    const clothingItems = [
+        { id: 1, category: "T-Shirts" },
+        { id: 2, category: "Hoodies" },
+        { id: 3, category: "Sweatshirts" },
+        { id: 4, category: "Trousers" },
+        { id: 5, category: "Caps" }
+    ];
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         setIsAuthenticated(!!token);
@@ -67,81 +75,103 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                             <li className=' '>
                                 <a href="men" class="desktop-item">MEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
-                                <div class="mega-box">
-                                    <div class="content  ">
-                                        <div class="row">
-                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
+                                <div class="mega-box ">
+                                    <div class="content gap-4 ">
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                                         </div>
-                                        <div class="row">
-                                            <header>Design Services</header>
+
+
+                                        <div class="row  ms-10  w-1/2">
+
                                             <ul class="mega-links">
-                                                <li><a href="#">Graphics</a></li>
-                                                <li><a href="#">Vectors</a></li>
-                                                <li><a href="#">Business cards</a></li>
-                                                <li><a href="#">Custom logo</a></li>
+                                                <li><a href="#">T Shart</a></li>
+                                                <li><a href="#">Hoodies</a></li>
+                                                <li><a href="#">Sweatshirts</a></li>
+                                                <li><a href="#">Trousers </a></li>
+                                                <li><a href="#">Caps </a></li>
                                             </ul>
+
+
                                         </div>
-                                        <div class="row">
-                                            <header>Email Services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Personal Email</a></li>
-                                                <li><a href="#">Business Email</a></li>
-                                                <li><a href="#">Mobile Email</a></li>
-                                                <li><a href="#">Web Marketing</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="row">
-                                            <header>Security services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Site Seal</a></li>
-                                                <li><a href="#">VPS Hosting</a></li>
-                                                <li><a href="#">Privacy Seal</a></li>
-                                                <li><a href="#">Website design</a></li>
-                                            </ul>
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/1337477/pexels-photo-1337477.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Men's Clothing" />
                                         </div>
                                     </div>
                                 </div>
                                 <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gray-500 transition-all duration-500 ease-out group-hover:w-full"></span>
-
                             </li>
+
 
                             <li>
                                 <a href="/women" class="desktop-item">WOMEN</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
                                 <div class="mega-box">
-                                    <div class="content">
-                                        <div class="row">
-                                            <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="" />
+                                    <div class="content gap-4 ">
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                                         </div>
-                                        <div class="row">
-                                            <header>Design Services</header>
+
+
+                                        <div class="row  ms-10  w-1/2">
+
                                             <ul class="mega-links">
-                                                <li><a href="#">Graphics</a></li>
-                                                <li><a href="#">Vectors</a></li>
-                                                <li><a href="#">Business cards</a></li>
-                                                <li><a href="#">Custom logo</a></li>
+                                                <li><a href="#">T Shart</a></li>
+                                                <li><a href="#">Hoodies</a></li>
+                                                <li><a href="#">Sweatshirts</a></li>
+                                                <li><a href="#">Trousers </a></li>
+                                                <li><a href="#">Caps </a></li>
                                             </ul>
+
+
                                         </div>
-                                        <div class="row">
-                                            <header>Email Services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Personal Email</a></li>
-                                                <li><a href="#">Business Email</a></li>
-                                                <li><a href="#">Mobile Email</a></li>
-                                                <li><a href="#">Web Marketing</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="row">
-                                            <header>Security services</header>
-                                            <ul class="mega-links">
-                                                <li><a href="#">Site Seal</a></li>
-                                                <li><a href="#">VPS Hosting</a></li>
-                                                <li><a href="#">Privacy Seal</a></li>
-                                                <li><a href="#">Website design</a></li>
-                                            </ul>
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Men's Clothing" />
                                         </div>
                                     </div>
                                 </div>
+                            </li>
+                            <li>
+                                <a href="/women" class="desktop-item">HOODIE</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                <div class="mega-box">
+                                    <div class="content gap-4 ">
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/171945/pexels-photo-171945.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+                                        </div>
+
+
+                                        <div class="row  ms-10  w-1/2">
+
+                                            <ul class="mega-links">
+                                                <li><a href="#">Men</a></li>
+                                                <li><a href="#">Women</a></li>
+                                                <li><a href="#">Child</a></li>
+                                               
+                                            </ul>
+
+
+                                        </div>
+                                        <div class="row w-1/3">
+                                            <img className='rounded' src="https://images.pexels.com/photos/433142/pexels-photo-433142.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Men's Clothing" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="/women" class="desktop-item">SWEAT SHART</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                              
+                            </li>
+                            <li>
+                                <a href="/women" class="desktop-item">TROUSER</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                
+                            </li>
+                            <li>
+                                <a href="/women" class="desktop-item">CAPS</a>
+                                <label for="showMega" class="mobile-item">Mega Menu</label>
+                                
                             </li>
 
 

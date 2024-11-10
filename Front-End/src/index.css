@@ -258,6 +258,7 @@ code {
 .row .mega-links li {
   padding: 0 20px;
 }
+
 .row .mega-links li:hover {
   padding: 0 20px;
 
@@ -466,6 +467,7 @@ nav input {
   color: var(--primary-font-color);
   width: 200px;
 }
+
 .outlet-section-btn-2:hover {
   background-color: var(--primary-hover-color);
   color: var(--primary-font-color);
@@ -504,12 +506,22 @@ nav input {
 }
 
 
-.checkout-btn{
+.checkout-btn {
   background-color: var(--primary-color);
 }
-.checkout-btn:hover{
+
+.checkout-btn:hover {
   background-color: var(--primary-hover-color);
-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.pay-btn {
+  background-color: var(--primary-color);
+}
+
+.pay-btn:hover {
+  background-color: var(--primary-hover-color);
+  transition: all 0.3s;
 }
 
 /*#################################################

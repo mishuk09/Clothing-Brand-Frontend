@@ -4,14 +4,14 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-const Gloves = () => {
+const Trouser = () => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get('http://localhost:5000/posts')
             .then(response => {
-                const filteredPosts = response.data.filter(post => post.category === 'women');
+                const filteredPosts = response.data.filter(post => post.category === 'trouser');
                 setPosts(filteredPosts);
                 setLoading(false);
             })
@@ -46,7 +46,7 @@ const Gloves = () => {
 
     return (
         <div className="container mx-auto px-4 lg:px-0">
-            <h1 className="text-2xl text-center mt-16 mb-10 font-bold">Gloves</h1>
+            <h1 className="text-2xl text-center mt-16 mb-10 font-bold">Trouser</h1>
             {loading ? (
                 <div className="flex justify-center items-center h-screen">
                     <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
@@ -55,12 +55,12 @@ const Gloves = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {posts.map(product => (
                         <div key={product._id} className="relative  bg-white rounded-sm shadow-md">
-                            <Link to={`/product/${product._id}`}>
+                            <a href={`/product/${product._id}`}>
                                 <div className="overflow-hidden rounded-sm">
                                     <img src={product.img} alt={product.title} className="w-full h-[350px] object-cover transform hover:scale-110 transition-transform duration-300" />
                                     <span className="absolute top-2 left-2 bg-gray-200 text-red-400 text-xs px-2 py-1 rounded">Sale</span>
                                 </div>
-                            </Link>
+                            </a>
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();
@@ -79,7 +79,7 @@ const Gloves = () => {
                                         <button
                                             key={color}
                                             aria-label={`Select ${color}`}
-                                            className='relative w-8 h-8 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75'
+                                            className='relative w-8 h-8 rounded-full border-2 border-gray hover:border-[2px] hover:border-gray-500 duration-75'
                                             style={{ backgroundColor: color.toLowerCase() }}
                                         />
                                     ))}
@@ -106,4 +106,4 @@ const Gloves = () => {
     );
 };
 
-export default Gloves;
+export default Trouser;

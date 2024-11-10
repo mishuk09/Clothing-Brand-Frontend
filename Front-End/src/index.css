@@ -466,6 +466,11 @@ nav input {
   color: var(--primary-font-color);
   width: 200px;
 }
+.outlet-section-btn-2:hover {
+  background-color: var(--primary-hover-color);
+  color: var(--primary-font-color);
+  width: 200px;
+}
 
 .shop-sell-outlet {
   color: var(--primary-color);
@@ -499,7 +504,13 @@ nav input {
 }
 
 
-
+.checkout-btn{
+  background-color: var(--primary-color);
+}
+.checkout-btn:hover{
+  background-color: var(--primary-hover-color);
+transition: all 0.3s;
+}
 
 /*#################################################
 ####                                            ####
@@ -670,7 +681,7 @@ h1 {
 }
 
 .subscribe-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-hover-color);
   /* transition: all 0.3s ease-in-out; */
 }
 

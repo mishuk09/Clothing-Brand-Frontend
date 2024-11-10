@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = ({ isOpen, toggleCart }) => {
     const { cartItems, removeFromCart } = useCart();
@@ -56,9 +58,9 @@ const Cart = ({ isOpen, toggleCart }) => {
                                         <p className="mt-2 font-bold ">$ {item.price * item.quantity}</p>
                                         <button
                                             onClick={() => removeFromCart(item.id, item.color, item.size)}
-                                            className="text-red-500 absolute top-0 right-2 mt-1 text-sm"
+                                            className="text-gray-500 absolute top-0 right-2 mt-1 text-sm"
                                         >
-                                            Remove
+                                           <FontAwesomeIcon icon={faTrash} />
                                         </button>
                                     </div>
                                 </div>
@@ -69,20 +71,20 @@ const Cart = ({ isOpen, toggleCart }) => {
                     <div className="border-t p-4">
                         <div className="flex justify-between">
                             <span className="font-semibold">Total</span>
-                            <span>र$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+                            <span className='font-bold'>$ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
                         </div>
                         <div className="flex justify-between mt-2">
                             <span className="font-semibold">Shipping</span>
                             <span>Cost will appear on checkout</span>
                         </div>
-                        <Link to='/checkout'>
+                        <a href='/checkout'>
                             <button
                                 onClick={handleCheckout}
-                                className='w-full h-10 bg-black text-white rounded-md mt-6'
+                                className='w-full h-10 checkout-btn text-white rounded-md mt-6'
                             >
                                 Checkout
                             </button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
 

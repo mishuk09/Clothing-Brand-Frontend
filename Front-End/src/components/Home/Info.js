@@ -6,9 +6,9 @@ const Info = () => {
     return (
         <div className='container mt-10 mb-14 flex justify-around'>
             <div><img className='w-20 h-20' src={map} alt="" />
-                <p className='text-gray-700'>Australian Made</p></div>
+                <p className='text-gray-500'>Australian Made</p></div>
             <div><img className='w-20 h-20' src={trans} alt="" />
-                <p className='text-gray-700'>Transparency</p></div>
+                <p className='text-gray-500'>Transparency</p></div>
 
         </div>
     );

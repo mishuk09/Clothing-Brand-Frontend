@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ShopourBasic from '../Home/ShopourBasics';
-import ShopByCat from './ShopByCat';
+ 
 
 const ShopbySize = () => {
     const sizes = {

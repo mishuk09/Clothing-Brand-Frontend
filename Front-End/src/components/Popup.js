@@ -39,7 +39,7 @@ const Popup = () => {
                                     <div className='announcement-bar__center-panel'>
                                         <Slider {...sliderSettings}>
                                             <div>
-                                                <a href='/pages/outlet-store' className='announcement-bar__link'>
+                                                <a href='/outlet-store' className='announcement-bar__link'>
                                                     <p>OUTLET STORE - Up to 70% Off*</p>
                                                 </a>
                                             </div>

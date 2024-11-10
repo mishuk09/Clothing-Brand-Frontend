@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import heart from '../img/heart (2).png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -74,12 +72,12 @@ const Offerdiv = () => {
             >
                 {posts.map(product => (
                     <div key={product._id} className="relative bg-white rounded-sm shadow-md">
-                        <Link to={`/product/${product._id}`}>
+                        <a href={`/product/${product._id}`}>
                             <div className="overflow-hidden rounded-sm">
                                 <img src={product.img} alt={product.title} className="w-full h-[300px] object-cover transform hover:scale-110 transition-transform duration-300" />
                                 <span className="absolute top-2 left-2 bg-gray-200 text-red-400 text-xs px-2 py-1 rounded">Sale</span>
                             </div>
-                        </Link>
+                        </a>
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -92,12 +90,12 @@ const Offerdiv = () => {
                             <FontAwesomeIcon className={`w-4   ${wishlist[product._id] ? 'text-red-600' : 'text-gray-400'}`} icon={faHeart} />
                         </button>
                         <div className='ps-2'>
-                            <div className="flex space-x-1 pt-2">
+                        <div className="flex space-x-1 pt-2">
                                 {product.color.map(color => (
                                     <button
                                         key={color}
                                         aria-label={`Select ${color}`}
-                                        className='relative w-8 h-8 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75'
+                                        className='relative w-8 h-8 rounded-full border-2 border-gray hover:border-[2px] hover:border-gray-500 duration-75'
                                         style={{ backgroundColor: color.toLowerCase() }}
                                     />
                                 ))}

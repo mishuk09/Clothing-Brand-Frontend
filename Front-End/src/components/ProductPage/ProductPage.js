@@ -72,7 +72,7 @@ const ProductPage = ({ toggleCart }) => {
               />
             </div>
             <div className="md:w-1/2 lg:sticky self-start mt-4 md:mt-0 top-0">
-              <span className='uppercase'>{product.category}</span>
+              <span className='uppercase text-xs text-gray-500'>{product.category}</span>
               <h1 className="text-3xl font-bold mt-2 mb-4">{product.title}</h1>
 
               <div>

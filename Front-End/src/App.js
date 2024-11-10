@@ -1,16 +1,11 @@
-
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router';
 import SignIn from './components/Auth/SignIn';
 import New from './components/Items/New';
-import Shoes from './components/Items/Shoes';
 import Cloth from './components/Items/Cloth';
-import Gloves from './components/Items/Gloves';
-import Kitchen from './components/Items/Kitchen';
 import Dashboard from './components/Auth/Dashboard';
 import ProductPage from './components/ProductPage/ProductPage';
 import Cart from './components/Cart';
-// import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 import { CartProvider } from './components/CartContext';
 import { useState } from 'react';
@@ -28,6 +23,11 @@ import Home from './components/Home/Home';
 import Outletstore from './components/Store/Outletstore';
 import Info from './components/Home/Info';
 import Collection from './components/Collection/Collection';
+import Women from './components/Items/Women';
+import Hoodie from './components/Items/Hoodie';
+import Sweatshart from './components/Items/Sweatshart';
+import Trouser from './components/Items/Trouser';
+import Caps from './components/Items/Caps';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -50,21 +50,19 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           {/* <Route path="/orders" element={<Orders />} /> Corrected route for Orders component */}
 
-          <Route path='/shoes' element={<Shoes />} />
           <Route path='/men' element={<Cloth />} />
-          <Route path='/women' element={<Gloves />} />
-          <Route path='/kitchen' element={<Kitchen />} />
+          <Route path='/women' element={<Women />} />
+          <Route path='/hoodie' element={<Hoodie />} />
+          <Route path='/sweatshart' element={<Sweatshart />} />
+          <Route path='/trouser' element={<Trouser />} />
+          <Route path='/caps' element={<Caps />} />
+
+          {/* Authentications sections */}
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path="/product/:id" element={<ProductPage toggleCart={toggleCart} />} />
 
-          {/* <Route path='/addpost' element={<AddPost />} /> */}
-          {/* <Route path="/update/:id" element={<UpdatePost />} /> */}
-          {/* <Route path="/delete/:id" element={<DeletePost />} /> */}
-
-          {/* <Route path="/edit" element={<Edit />} /> */}
-          {/* <Route path="/delete" element={<Delete />} /> */}
 
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/ship" element={<ShippingReturns />} />

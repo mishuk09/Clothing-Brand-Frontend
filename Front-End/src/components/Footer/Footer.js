@@ -25,18 +25,15 @@ const Footer = () => {
                             <img className="w-24" src={logo} alt="" />
                         </p>
 
-                        <p class="text-justify pe-6 text-[14px]">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Porro eius doloremque doloribus quos, </p>
+                        <p class="text-justify pe-6 text-[14px]">Shop quality products, enjoy fast shipping, secure payment, and excellent service. </p>
                         <p class="text-xl sm:text-2xl font-semibold mt-3 mb-2 number">+977 65764763</p>
-                        <p class="text-justify pe-6 text-[14px]">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. </p>
+                        <p class="text-justify pe-6 text-[14px]">Follow us in social media as well for more update. </p>
                         <div class="flex gap-2 mt-3">
                             <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faFacebook} /></p>
                             <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faInstagram} /></p>
-                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faPinterest} /></p>
-                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faEnvelope} /></p>
-                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><i
-                                size='xl' class="fa-brands fa-square-whatsapp"></i></p>
+                            {/* <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faPinterest} /></p> */}
+                            {/* <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><FontAwesomeIcon size='xl' icon={faEnvelope} /></p>
+                            <p class="rounded-full hover:text-gray-400 text-gray-700 duration-75 border-3 flex items-center text-center justify-center w-10 h-10"><i  size='xl' class="fa-brands fa-square-whatsapp"></i></p> */}
                         </div>
                     </div>
 
@@ -46,7 +43,6 @@ const Footer = () => {
                         <a href="/privacy" class="text-[14px]   cursor-pointer pb-1">Privacy &
                             policy</a>
                         <a href="/about" class="text-[14px] cursor-pointer pb-1">About us</a>
-                        <a href="/404" class="text-[14px] cursor-pointer pb-1">404</a>
                         <a href="/contact" class="text-[14px] cursor-pointer pb-1">Contact
                             us</a>
                         <a href="/faqs" class="text-[14px] cursor-pointer pb-1">FAQ's</a>
@@ -56,12 +52,11 @@ const Footer = () => {
                     <div class='w-full footer-service h-full leading-6 flex flex-col overflow-hidden'>
                         <p class="text-black cursor-pointer pt-4 md:pt-12 pb-3 text-[15px] font-bold">Shop By Outletshop
                         </p>
-                        <a href="" class="text-[14px] cursor-pointer pb-1">Help & FAQs</a>
-                        <a href="#" class="text-[14px] cursor-pointer pb-1">Order Tracking</a>
-                        <a href="#" class="text-[14px] cursor-pointer pb-1">Shipping & Delivery</a>
-                        <a href="#" class="text-[14px] cursor-pointer pb-1">Order History</a>
+                        <a href="/contact" class="text-[14px] cursor-pointer pb-1">Help</a>
+                        <a href="/signin" class="text-[14px] cursor-pointer pb-1">Order Tracking</a>
+                        <a href="/signin" class="text-[14px] cursor-pointer pb-1">Shipping & Delivery</a>
                         <a href="#" class="text-[14px] cursor-pointer pb-1">Advanced Search</a>
-                        <a href="#" class="text-[14px] cursor-pointer pb-1">My Account</a>
+                        <a href="/signin" class="text-[14px] cursor-pointer pb-1">My Account</a>
                     </div>
 
                     <div class='grid   w-[100%]'>
@@ -96,8 +91,8 @@ const Footer = () => {
 
                 <div
                     class="custom-container bg-slate-50 mb-6 md:mb-0 md:flex text-center pt-3 flex-row  justify-between items-center w-full h-20">
-                    <div class="text-[14px] py-2">© Prime eCommerce. 2021. All Rights Reserved</div>
-                    <div class="text-[14px] py-2">Web designed and IT partner Prime IT Sewa</div>
+                    <div class="text-[14px] py-2">© Sally Looze. 2024. All Rights Reserved</div>
+                    <div class="text-[14px] py-2">Plexus.org.in Digital Marketing Services</div>
 
                     <div class="flex gap-3  items-center text-center justify-center">
                         <img class=" w-10" src={applepay} alt="" />

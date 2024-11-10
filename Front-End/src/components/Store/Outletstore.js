@@ -10,8 +10,8 @@ const Outletstore = () => {
                 <div className='text-center text-[60px] text-white uppercase'>
                     up to 70% off
                 </div>
-                <div>
-                    <button className='h-10 w-full shop-sell-outlet mt-6 px-4 bg-gray-300  rounded-sm'>SHOP THE SELL</button>
+                <div className='mt-6'>
+                    <a href='/colletion' className='h-10 w-full shop-sell-outlet   px-4 py-2 bg-gray-300 hover:bg-gray-200 duration-75  rounded-sm'>SHOP THE SELL</a>
                 </div>
             </div>
 

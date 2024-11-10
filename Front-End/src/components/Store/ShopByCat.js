@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Info from '../Home/Info';
 
 const ShopByCat = () => {
     const categories = {

@@ -16,15 +16,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
     const { cartItems } = useCart(); // Access cart items from the context
     const [showSearch, setShowSearch] = useState(false);
 
-
-    const clothingItems = [
-        { id: 1, category: "T-Shirts" },
-        { id: 2, category: "Hoodies" },
-        { id: 3, category: "Sweatshirts" },
-        { id: 4, category: "Trousers" },
-        { id: 5, category: "Caps" }
-    ];
-
+ 
     useEffect(() => {
         const token = localStorage.getItem('token');
         setIsAuthenticated(!!token);
@@ -132,7 +124,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                                 </div>
                             </li>
                             <li>
-                                <a href="/women" class="desktop-item">HOODIE</a>
+                                <a href="/hoodie" class="desktop-item">HOODIE</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
                                 <div class="mega-box">
                                     <div class="content gap-4 ">
@@ -147,7 +139,7 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                                                 <li><a href="#">Men</a></li>
                                                 <li><a href="#">Women</a></li>
                                                 <li><a href="#">Child</a></li>
-                                               
+
                                             </ul>
 
 
@@ -159,19 +151,19 @@ const Navbar = ({ toggleCart, isCartOpen }) => {
                                 </div>
                             </li>
                             <li>
-                                <a href="/women" class="desktop-item">SWEAT SHART</a>
+                                <a href="/sweatshart" class="desktop-item">SWEAT SHART</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
-                              
+
                             </li>
                             <li>
-                                <a href="/women" class="desktop-item">TROUSER</a>
+                                <a href="/trouser" class="desktop-item">TROUSER</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
-                                
+
                             </li>
                             <li>
-                                <a href="/women" class="desktop-item">CAPS</a>
+                                <a href="/caps" class="desktop-item">CAPS</a>
                                 <label for="showMega" class="mobile-item">Mega Menu</label>
-                                
+
                             </li>
 
 

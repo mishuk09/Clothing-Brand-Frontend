@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import heart from '../img/heart (2).png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -63,7 +61,7 @@ const Recentview = () => {
     }, []);
 
     return (
-        <div className='style-with mt-6 pb-10'>
+        <div className='style-with mt-6 pb-5'>
             <div className="text-start items-center pt-10">
                 <h1 className="text-2xl ps-2 ">Recent viewed
                 </h1>
@@ -76,13 +74,13 @@ const Recentview = () => {
                 containerClass="container mt-8 mx-auto ps-0 "
             >
                 {posts.map(product => (
-                    <div key={product._id} className="relative  bg-white rounded-sm shadow-md">
-                        <Link to={`/product/${product._id}`}>
+                    <div key={product._id} className="relative  bg-white rounded-sm border-b shadow-md">
+                        <a href={`/product/${product._id}`}>
                             <div className="overflow-hidden rounded-sm">
                                 <img src={product.img} alt={product.title} className="w-full h-[350px] object-cover transform hover:scale-110 transition-transform duration-300" />
                                 <span className="absolute top-2 left-2 bg-gray-200 text-red-400 text-xs px-2 py-1 rounded">Sale</span>
                             </div>
-                        </Link>
+                        </a>
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -101,7 +99,7 @@ const Recentview = () => {
                                     <button
                                         key={color}
                                         aria-label={`Select ${color}`}
-                                        className='relative w-8 h-8 rounded-sm border-2 border-gray hover:border-[3px] hover:border-white duration-75'
+                                        className='relative w-8 h-8 rounded-full border-2 border-gray hover:border-[2px] hover:border-gray-500 duration-75'
                                         style={{ backgroundColor: color.toLowerCase() }}
                                     />
                                 ))}

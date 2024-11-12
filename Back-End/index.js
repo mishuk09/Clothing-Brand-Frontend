@@ -56,7 +56,7 @@ const verifyJWT = (req, res, next) => {
 app.post('/signup', async (req, res) => {
     try {
         // const { firstName, lastName, email, password } = req.body;
-        const { firstName, lastName, email, password, gender, mobile } = req.body;
+        const { firstName, lastName, email, password, gender,  mobile } = req.body;
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -66,7 +66,7 @@ app.post('/signup', async (req, res) => {
             lastName,
             email,
             password: hashedPassword,
-            gender,  // New field
+            gender,    
             mobile   // New field
         });
 
@@ -79,19 +79,19 @@ app.post('/signup', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
 app.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        // Find user by email
         const user = await Auth.findOne({ email });
 
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
+        // Validate password
         const validPassword = await bcrypt.compare(password, user.password);
-
         if (!validPassword) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
@@ -103,24 +103,25 @@ app.post('/signin', async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        res.status(200).json({ token });
+        // Send token, email, and name in the response
+        res.status(200).json({
+            token,
+            email: user.email,
+            name: user.firstName,  // Assuming 'name' exists in the user schema
+            address: user.address  // Assuming 'name' exists in the user schema
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
 
+
 // Use routes
 app.use('/posts', post);
 app.use('/auth', authRoutes); // Use the auth routes
 app.use('/item', orderRoutes); // Use the order routes
 
-
-// Protected route
-// app.get('/dashboard', verifyJWT, (req, res) => {
-//     res.status(200).json({ message: 'Welcome to Dashboard!' });
-// });
-// Dashboard route to fetch user profile data
 app.get('/dashboard', verifyJWT, async (req, res) => {
     try {
         // Fetch user data using the userId from the decoded JWT token
@@ -142,7 +143,7 @@ app.get('/dashboard', verifyJWT, async (req, res) => {
 // Update user profile
 app.put('/update-profile', verifyJWT, async (req, res) => {
     try {
-        const { firstName, lastName, gender, email, mobile, newPassword } = req.body;
+        const { firstName, lastName, gender, email, address, mobile, newPassword } = req.body;
         const userId = req.userId;
 
         const updatedData = {
@@ -150,6 +151,7 @@ app.put('/update-profile', verifyJWT, async (req, res) => {
             lastName,
             gender,
             email,
+            address,
             mobile
         };
 

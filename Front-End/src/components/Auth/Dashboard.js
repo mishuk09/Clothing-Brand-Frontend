@@ -18,6 +18,7 @@ const Dashboard = () => {
         gender: '',
         email: '',
         mobile: '',
+        address: '',
         newPassword: '',
         confirmPassword: '',
     });
@@ -83,6 +84,7 @@ const Dashboard = () => {
                     gender: profile.gender,
                     email: profile.email,
                     mobile: profile.mobile,
+                    address: profile.address,
                     newPassword: profile.newPassword === profile.confirmPassword ? profile.newPassword : null,
                 },
                 {
@@ -100,6 +102,11 @@ const Dashboard = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
+        localStorage.removeItem('address');
+        localStorage.removeItem('cartItems');
+
         navigate('/signin');
     };
 
@@ -226,6 +233,18 @@ const Dashboard = () => {
                                         type="text"
                                         id="mobile"
                                         value={profile.mobile}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="w-1/2  gap-6 personal-inout text-[14px] mt-3">
+
+                                    <p className="text-[18px] font-medium mt-8">Your Address</p>
+                                    <input
+                                        className="border outline-none px-2 mt-3"
+                                        placeholder="Address"
+                                        type="text"
+                                        id="address"
+                                        value={profile.address}
                                         onChange={handleChange}
                                     />
                                 </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 import ReviewSection from './ReviewSection';
@@ -14,6 +14,8 @@ const ProductPage = ({ toggleCart }) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     axios.get(`http://localhost:5000/posts/${id}`)
@@ -33,18 +35,22 @@ const ProductPage = ({ toggleCart }) => {
   const handleQuantityChange = (increment) => {
     setQuantity(prevQuantity => Math.max(1, prevQuantity + increment));
   };
-
   const handleAddToCart = () => {
-    addToCart({
-      id: product.id,
-      title: product.title,
-      img: product.img,
-      color: selectedColor,
-      size: selectedSize,
-      price: product.newPrice,
-      quantity
-    });
-    toggleCart(); // Open cart when item is added
+    const token = localStorage.getItem('token');
+    if (token) {
+      addToCart({
+        id: product.id,
+        title: product.title,
+        img: product.img,
+        color: selectedColor,
+        size: selectedSize,
+        price: product.newPrice,
+        quantity
+      });
+      toggleCart(); // Open cart when item is added
+    } else {
+      navigate('/signin'); // Redirect to sign-in page if token is missing
+    }
   };
 
   const stripHtmlTags = (html) => {
@@ -62,7 +68,7 @@ const ProductPage = ({ toggleCart }) => {
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : (
-         
+
           <div className="flex flex-col md:flex-row md:space-x-8">
             <div className="md:w-1/2">
               <img

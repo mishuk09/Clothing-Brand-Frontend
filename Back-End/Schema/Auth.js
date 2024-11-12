@@ -32,7 +32,9 @@ const authSchema = new mongoose.Schema({
     mobile: {
         type: String,
         trim: true
-    }
+    },
+    address: { type: String } // Add this line for the address field
+
 });
 
 module.exports = mongoose.model('Auth', authSchema);

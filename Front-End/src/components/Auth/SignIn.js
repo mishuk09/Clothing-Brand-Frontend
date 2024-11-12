@@ -24,7 +24,6 @@ export default function SignIn() {
     const [alertSeverity, setAlertSeverity] = React.useState('success');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -49,8 +48,11 @@ export default function SignIn() {
             const response = await axios.post('http://localhost:5000/signin', userData);
             console.log(response.data);
 
-            // Save token to localStorage
+            // Save token, email, and name to localStorage
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('name', response.data.name);
+            localStorage.setItem('address', response.data.address);
 
             setShowAlert(true);
             setAlertMessage('Login successful!');
@@ -73,6 +75,8 @@ export default function SignIn() {
             }, 2000);
         }
     };
+
+
 
     return (
         <ThemeProvider theme={defaultTheme}>

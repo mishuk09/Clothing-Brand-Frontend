@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from './CartContext';
 import axios from 'axios';
 import am from './Footer/img/am.svg';
@@ -19,6 +19,19 @@ const Checkout = () => {
     const [errors, setErrors] = useState({});
     const [paymentMethod, setPaymentMethod] = useState('Card Payment');
     const [cardDetails, setCardDetails] = useState({ cardNumber: '', expiryDate: '', cvv: '' });
+
+    // Fetch logged-in user data
+    useEffect(() => {
+        const storedName = localStorage.getItem('name');
+        const storedEmail = localStorage.getItem('email');
+        if (storedName && storedEmail) {
+            setFormData((prevData) => ({
+                ...prevData,
+                fullName: storedName,
+                email: storedEmail,
+            }));
+        }
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,7 +80,7 @@ const Checkout = () => {
             cartItems,
             totalAmount: calculateTotal() + 100,
             paymentMethod,
-            cardDetails, // Send card details for card payment
+            cardDetails,
         };
 
         try {
@@ -92,7 +105,6 @@ const Checkout = () => {
     const calculateTotal = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
-
     return (
         <div className="mx-auto p-4 lg:px-0">
             <div className="text-center pb-6 border-b-2">
@@ -103,7 +115,6 @@ const Checkout = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">1. General Information</h2>
-                            <label className="block mb-2 text-base">Full Name *</label>
                             <input
                                 type="text"
                                 name="fullName"

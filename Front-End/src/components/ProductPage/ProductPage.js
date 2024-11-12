@@ -18,7 +18,7 @@ const ProductPage = ({ toggleCart }) => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/posts/${id}`)
+    axios.get(`https://clothing-brand-backend.vercel.app/posts/${id}`)
       .then(response => {
         const productData = response.data;
         setProduct(productData);

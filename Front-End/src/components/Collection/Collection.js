@@ -21,7 +21,7 @@ const Collection = () => {
 
     // Fetch posts on mount
     useEffect(() => {
-        axios.get('http://localhost:5000/posts')
+        axios.get('https://clothing-brand-backend.vercel.app/posts')
             .then(response => {
                 setPosts(response.data);
                 setFilteredPosts(response.data); // Initial set to show all products

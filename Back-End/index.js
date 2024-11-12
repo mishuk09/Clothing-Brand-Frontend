@@ -56,7 +56,7 @@ const verifyJWT = (req, res, next) => {
 app.post('/signup', async (req, res) => {
     try {
         // const { firstName, lastName, email, password } = req.body;
-        const { firstName, lastName, email, password, gender,  mobile } = req.body;
+        const { firstName, lastName, email, password, gender, mobile } = req.body;
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -66,7 +66,7 @@ app.post('/signup', async (req, res) => {
             lastName,
             email,
             password: hashedPassword,
-            gender,    
+            gender,
             mobile   // New field
         });
 

@@ -46,7 +46,7 @@ const Dashboard = () => {
             }
 
             try {
-                const response = await axios.get('http://localhost:5000/dashboard', {
+                const response = await axios.get('https://clothing-brand-backend.vercel.app/dashboard', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -76,7 +76,7 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         try {
             await axios.put(
-                'http://localhost:5000/update-profile',
+                'https://clothing-brand-backend.vercel.app/update-profile',
                 {
                     firstName: profile.firstName,
                     lastName: profile.lastName,
@@ -248,7 +248,7 @@ const Dashboard = () => {
                                 <button onClick={handleSave} className="mt-4">Save</button>
                             </div>
                         )}
-                        
+
                     </div>
                 </div>
             </main>

@@ -9,7 +9,7 @@ const ShopourBasic = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts')
+        axios.get('https://clothing-brand-backend.vercel.app/posts')
             .then(response => {
                 setPosts(response.data.slice(0, 12));
             })

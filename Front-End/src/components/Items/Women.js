@@ -9,7 +9,7 @@ const Women = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts')
+        axios.get('https://clothing-brand-backend.vercel.app/posts')
             .then(response => {
                 const filteredPosts = response.data.filter(post => post.category === 'women');
                 setPosts(filteredPosts);

@@ -84,7 +84,7 @@ const Checkout = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/item/orders', orderData);
+            const response = await axios.post('https://clothing-brand-backend.vercel.app/item/orders', orderData);
             console.log(response.data);
             setFormData({
                 fullName: '',

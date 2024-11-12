@@ -9,7 +9,7 @@ const Offerdiv = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts')
+        axios.get('https://clothing-brand-backend.vercel.app/posts')
             .then(response => {
                 setPosts(response.data.slice(0, 12));
             })
@@ -90,7 +90,7 @@ const Offerdiv = () => {
                             <FontAwesomeIcon className={`w-4   ${wishlist[product._id] ? 'text-red-600' : 'text-gray-400'}`} icon={faHeart} />
                         </button>
                         <div className='ps-2'>
-                        <div className="flex space-x-1 pt-2">
+                            <div className="flex space-x-1 pt-2">
                                 {product.color.map(color => (
                                     <button
                                         key={color}
